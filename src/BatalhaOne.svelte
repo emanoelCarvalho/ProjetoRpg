@@ -11,12 +11,25 @@ let BossOne = new Boss1("Liliane",128, 13, 5 );
 let JogadaDaVez = writable(false);
 
 function AtaqueProta(){
+    Prota.ChuvaDeCodigos(BossOne)
     BossOne.Arduino(Prota)
-
-
+    if(BossOne.hp <= 0){
+        ProximaFase();
+    } else{
         if(Prota.hp <= 0){
-            console.log("Liliane venceu")
+            FimDeJogo();
         }
+    }
+    console.log(BossOne.hp, Prota.hp)
+}
+
+function ProximaFase(){
+    console.log("Protagonista Ganhou essa fase!")
+}
+
+
+function FimDeJogo(){
+    console.log("Fim De Jogo!")
 }
 
 </script>
