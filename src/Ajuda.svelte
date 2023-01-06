@@ -1,5 +1,5 @@
 <svelte:head>
-    <link rel="stylesheet" href="/src/assets/Ajuda.css">
+
 </svelte:head>
 
 <script>

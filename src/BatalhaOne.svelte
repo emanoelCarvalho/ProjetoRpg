@@ -1,5 +1,5 @@
 <script>
-import {estado} from './Estado';
+import { estado } from './Estado';
 import { Protagonista} from '../Protagonista';
 import {Boss1} from '../Liliane'
 import { writable } from 'svelte/store';
@@ -10,18 +10,29 @@ let BossOne = new Boss1("Liliane",128, 13, 5 );
 
 let JogadaDaVez = writable(false);
 
+function trocarTurno(JogadaDaVez){
+    if(JogadaDaVez == false){
+        JogadaDaVez = true;
+        console.log(JogadaDaVez)
+    } else if (JogadaDaVez == true){
+        setTimeout(function ()  {
+            JogadaDaVez = false;
+            console.log(JogadaDaVez)
+        }, 5000);
+    }
+}
+
 function AtaqueProta(){
+    trocarTurno();
     Prota.ChuvaDeCodigos(BossOne)
     BossOne.Arduino(Prota)
     if(BossOne.hp <= 0){
-        ProximaFase();
-    } else{
-        if(Prota.hp <= 0){
-            FimDeJogo();
+        return ProximaFase();
+    } else if(Prota.hp <= 0){
+           return FimDeJogo();
         }
     }
-    console.log(BossOne.hp, Prota.hp)
-}
+
 
 function ProximaFase(){
     console.log("Protagonista Ganhou essa fase!")
