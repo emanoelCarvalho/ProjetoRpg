@@ -8,7 +8,8 @@ import Jogar from './Jogar.svelte';
 
 
 let protaBatalha1 = new Protagonista( "Luiza",118, 11, 5);
-let bossOne = new Boss1("Liliane",128, 13, 5 );
+let bossOne = new Boss1("Liliane",128, 13, 5);
+
 
 let JogadaDaVez = writable(false);
 
@@ -97,7 +98,7 @@ function ataqueBoss(BossOne){
             BossOne.Linux(Prota)
             console.log(Prota.hp)
         }, 3000)
-    }else{
+    }else{ 
      console.log("Ola")
     }
     turnos();
@@ -143,7 +144,9 @@ function ataqueBoss(BossOne){
         <div class="liliInfo">
             <p class="nomeBoss">{bossOne.nome}</p>
             <p class="nomeBoss">{bossOne.hp}</p>
-            <img id="boss" src="" alt="" srcset="">
+        </div>
+        <div class="imagem">
+            <img id="boss" src="./Liliane.png" alt="boss" srcset="">
         </div>
     </div>
 </main>
@@ -155,37 +158,8 @@ function ataqueBoss(BossOne){
 #blocoOne{
     float: right;
 }
-
-/*#topRow{
-    display: flex;
-    flex-direction: row;
-    border: 1px solid;
-    border-color: aqua;
-    justify-content: center;
-}
-
-#luizaProta{
-    border: 1px solid;
-}
-
-#luizaProta img{
+.imagem{
     height: 200px;
-    margin-top: 400px;
-}
-#lilianeBoss{
-    border: 1px solid;
 }
 
-#lilianeBoss{
-    height: 200px;
-    margin-top: 400px;    
-}
-.chars{
-    margin: 15px 40px;
-}
-
-#bottonRow{
-    padding: 20px;
-    font: 20pt;
-}*/
 </style>
