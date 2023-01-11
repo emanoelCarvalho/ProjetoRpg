@@ -7,8 +7,8 @@ import Menu from './Menu.svelte';
 import Jogar from './Jogar.svelte';
 
 
-let Prota = new Protagonista( "Luiza",118, 11, 5);
-let BossOne = new Boss1("Liliane",128, 13, 5 );
+let protaBatalha1 = new Protagonista( "Luiza",118, 11, 5);
+let bossOne = new Boss1("Liliane",128, 13, 5 );
 
 let JogadaDaVez = writable(false);
 
@@ -25,44 +25,44 @@ function trocarTurno(JogadaDaVez){
 };
 
 function ataqueProta(){
-    Prota.ChuvaDeCodigos(BossOne);
-    BossOne.Linux(Prota);
-    console.log(Prota.hp, BossOne.hp);
-    if(BossOne.hp <= 0){
-        console.log(ProximaFase());
-    } else if(Prota.hp <= 0){
-           return FimDeJogo();
+    protaBatalha1.ChuvaDeCodigos(bossOne);
+    bossOne.Linux(protaBatalha1);
+    console.log(protaBatalha1.hp, bossOne.hp);
+    if(bossOne.hp <= 0){
+        console.log(proximaFase());
+    } else if(protaBatalha1.hp <= 0){
+           return fimDeJogo();
         }
         trocarTurno();
     };
 
     function ataqueProtaEspecial(){
-        if(Prota.hp < 59){
-            Prota.Recursao(BossOne);
-            BossOne.Arduino(Prota);
+        if(protaBatalha1.hp < 59){
+            protaBatalha1.Recursao(bossOne);
+            bossOne.Arduino(protaBatalha1);
         }
-        if(BossOne.hp <= 0){
-        return ProximaFase();
-    } else if(Prota.hp <= 0){
-           return FimDeJogo();
+        if(bossOne.hp <= 0){
+        return proximaFase();
+    } else if(protaBatalha1.hp <= 0){
+           return fimDeJogo();
         }
         trocarTurno();
     };
 
     function curaProtagonista(){
-        if(Prota.hp < 59){
-            Prota.HoraDoCafe();
-            console.log(Prota.hp) ;      
+        if(protaBatalha1.hp < 59){
+            protaBatalha1.HoraDoCafe();
+            console.log(protaBatalha1.hp) ;      
         }
         trocarTurno();
     };
 
 
-    function ProximaFase(){
+    function proximaFase(){
         console.log("Protagonista Ganhou essa fase!");
     };
 
-    function FimDeJogo(){
+    function fimDeJogo(){
         console.log("Fim De Jogo!");
         console.log("Você Perdeu!");
     };
@@ -102,57 +102,60 @@ function ataqueBoss(BossOne){
     }
     turnos();
 }
-
-
-ataqueProta(Prota);
-ataqueBoss(BossOne);*/
+*/
 </script>
 
 <main>
-    <div id="container">
-        <div id="topRow">
-            <div id="luizaProta" class="chars">
-                <img src="" alt="" srcset="">
-               
-            </div>
-            <div id="lilianeBoss" class="chars">
-                <img src="" alt="" srcset="">
-            </div>
+    <div id="blocoOne">
+        <div class="protaInformaçoes">
+            <p class="nomeProta">{protaBatalha1.nome}</p>     
+            <p class="nomeProta">{protaBatalha1.hp}</p> 
+            <div id="barraDeVidaProta"></div>    
         </div>
-        <div id="bottonRow"></div>
+        <div id="prota">
+            <img id="protaImagem" src="" alt="" srcset="">
+        </div>
+        <div class="ataques">
+            <ul>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div on:click={() => ataqueProta()}>
+                    <button>
+                     ChuvaDeCodigos
+                    </button>
+                </div>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div on:click={() => ataqueProtaEspecial()}>
+                    <button>
+                        Recursão
+                    </button>
+                </div>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div on:click={() => curaProtagonista()}>
+                    <button>
+                        HoraDoCafé
+                     </button>
+                 </div>
+             </ul>
+        </div>
     </div>
 
-    
-    <div id="ataques">
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={() => ataqueProta()}>
-            <button>
-                ChuvaDeCodigos
-            </button>
-        </div>
-
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={() => ataqueProtaEspecial()}>
-            <button>
-                Recursao
-            </button>
-        </div>
-
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={() => curaProtagonista()}>
-            <button>
-                HoraDoCafe
-            </button>
+    <div id="blocoTwo">
+        <div class="liliInfo">
+            <p class="nomeBoss">{bossOne.nome}</p>
+            <p class="nomeBoss">{bossOne.hp}</p>
+            <img id="boss" src="" alt="" srcset="">
         </div>
     </div>
 </main>
 
 <style>
-#ataques{
-    text-align: justify;
-    float: right;
-    width: 500px;
+#blocoTwo{
+    float: left;
 }
+#blocoOne{
+    float: right;
+}
+
 /*#topRow{
     display: flex;
     flex-direction: row;
