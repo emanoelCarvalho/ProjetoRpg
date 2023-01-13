@@ -21,7 +21,7 @@
                 console.log(JogadaDaVez);
             }, 5000);
         }
-    }
+    };
 
     function ataqueProta() {
         protaBatalha1.ChuvaDeCodigos(bossOne);
@@ -33,7 +33,7 @@
             return bossGanhouJogo();
         }
         trocarTurno();
-    }
+    };
 
     function ataqueProtaEspecial() {
         if (protaBatalha1.hp < 59) {
@@ -46,7 +46,7 @@
             return bossGanhouJogo();
         }
         trocarTurno();
-    }
+    };
 
     function curaProtagonista() {
         if (protaBatalha1.hp < 59) {
@@ -54,7 +54,7 @@
             console.log(protaBatalha1.hp);
         }
         trocarTurno();
-    }
+    };
 
     function proximaFase() {
         console.log("Protagonista Ganhou essa fase!");
@@ -62,17 +62,19 @@
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-        trocarestadodojogo( 'menu')
-    }
+        
+        trocarestadodojogo("menu");
+    };
 
     function bossGanhouJogo() {
-        console.log("Você Perdeu!");
         // @ts-ignore
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-        trocarestadodojogo( 'menu')
-    }
+        
+        console.log("Você Perdeu!");
+        trocarestadodojogo("menu");
+    };
 
     function iniciarLuta() {
         // @ts-ignore
@@ -81,7 +83,7 @@
         blocoTwo.style.visibility = "visible";
         // @ts-ignore
         iniciandoBatle.style.visibility = "hidden";
-    }
+    };
 </script>
 
 <main>
@@ -89,7 +91,7 @@
         <div id="topRow">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div id="iniciandoBatle" on:click={() => iniciarLuta()}>
-                Iniciar
+                <button> Iniciar </button>
             </div>
             <div id="blocoOne">
                 <div class="protaInformaçoes">
@@ -104,15 +106,15 @@
                     <ul>
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <div on:click={() => ataqueProta()}>
-                             Chuva De Códigos 
+                            Chuva De Códigos
                         </div>
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <div on:click={() => ataqueProtaEspecial()}>
-                             Recursão 
+                            Recursão
                         </div>
                         <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <div on:click={() => curaProtagonista()}>
-                             Hora Do Café 
+                            Hora Do Café
                         </div>
                     </ul>
                 </div>
@@ -147,7 +149,6 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
     }
     #blocoOne {
         float: right;
