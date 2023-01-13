@@ -3,7 +3,6 @@
     import { Protagonista } from "../Protagonista";
     import { Boss1 } from "../Liliane";
     import { writable } from "svelte/store";
-    import Menu from "./Menu.svelte";
     import Jogar from "./Jogar.svelte";
 
     let protaBatalha1 = new Protagonista("Luiza", 118, 11, 5);
@@ -62,7 +61,7 @@
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-        
+
         trocarestadodojogo("menu");
     };
 
