@@ -107,7 +107,7 @@
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
 
-        trocarestadodojogo("menu");
+        //trocarestadodojogo("menu");
     }
 
     function bossGanhouJogo() {
@@ -137,7 +137,7 @@
             <div id="iniciandoBatle" on:click={() => iniciarLuta()}>
                 <button> Iniciar </button>
             </div>
-            <div id="blocoOne">
+            <div id="blocoOne" class="chars">
                 <div class="protaInformaçoes">
                     <div id="barraDeVidaProta" />
                     <div id="barraDeEstamina" />
@@ -145,7 +145,7 @@
                     <p class="nomeProta">{protaBatalha1.hp}</p>
                 </div>
                 <div id="prota">
-                    <img id="protaImagem" src="" alt="" srcset="" />
+                    <img id="protaImagem" src="luiza.png" alt="" srcset="" />
                 </div>
                 <div class="ataques">
                     <ul>
@@ -165,7 +165,7 @@
                 </div>
             </div>
 
-            <div id="blocoTwo">
+            <div id="blocoTwo" class="chars">
                 <div class="liliInfo">
                     <div id="barraDeVidaBoss" />
                     <div id="barraDeEstaminaBoss" />
@@ -176,69 +176,8 @@
                     <img id="boss" src="./Liliane.png" alt="boss" srcset="" />
                 </div>
             </div>
-            <div id="bottonRow" />
         </div>
     </div>
 </main>
-
-<style>
-    #iniciandoBatle {
-        display: flex;
-        position: absolute;
-        visibility: visible;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        width: 100vw;
-        height: 100vh;
-        flex-direction: row;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    #blocoOne {
-        float: right;
-        visibility: hidden;
-    }
-    #barraDeVidaProta {
-        width: 100%;
-        height: 20px;
-        background-color: greenyellow;
-        position: relative;
-        top: 0;
-        left: 0;
-    }
-    #barraDeEstamina {
-        width: 100%;
-        height: 10px;
-        background-color: cyan;
-        position: relative;
-        top: 0;
-        left: 0;
-    }
-    #blocoTwo {
-        float: left;
-        visibility: hidden;
-    }
-    #barraDeVidaBoss {
-        width: 100%;
-        height: 20px;
-        background-color: greenyellow;
-        position: relative;
-        top: 0;
-        right: 0;
-    }
-
-    #barraDeEstaminaBoss {
-        width: 100%;
-        height: 10px;
-        background-color: cyan;
-        position: relative;
-        top: 0;
-        right: 0;
-    }
-    #boss {
-        height: 400px;
-        width: 400px;
-    }
-</style>
+<link rel="stylesheet" href="./src/assets/batalhaOne.css">
+<style></style>
