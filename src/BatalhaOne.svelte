@@ -5,7 +5,7 @@
     import { writable } from "svelte/store";
     import Jogar from "./Jogar.svelte";
 
-    let protaBatalha1 = new Protagonista("Luiza", 118, 11, 5);
+    let protaBatalha1 = new Protagonista("Luiza", 64, 11, 5);
     let bossOne = new Boss1("Liliane", 128, 13, 5);
 
     let jogadaDaVez = writable(false);
@@ -23,8 +23,8 @@
     }
 
     function ataqueProta() {
-        let dado3 = Math.round(Math.random() * 3);
-        if (dado3 % 2 == 0) {
+        let dado4 = Math.round(Math.random() * 4);
+        if (dado4 % 2 == 0) {
             console.log(protaBatalha1.nome + " Usou Chuva de códigos");
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
@@ -45,6 +45,7 @@
                     bossAtaque();
                 }, 1000);
                 trocarTurno();
+                
             }
         }, 1000);
     }
@@ -94,11 +95,37 @@
     }
 
     function curaProtagonista() {
+        let vezeDeCura = 0;
         if (protaBatalha1.hp < 59) {
-            protaBatalha1.HoraDoCafe();
-            console.log(protaBatalha1.hp);
+            setTimeout(function () {
+                protaBatalha1.HoraDoCafe();
+                console.log(protaBatalha1.hp);
+            }, 1000);
+        } else {
+            console.log("A função não pode ser utilizada.");
         }
+        trocarTurno();
     }
+
+    /*let contadorDeEstamina = 0;
+    function subirEstamina() {
+        if (contadorDeEstamina == 0) {
+            // @ts-ignore
+            estamina.style.width = "0%";
+        } else if (contadorDeEstamina == 1) {
+            // @ts-ignore
+            estamina.style.width = "25%";
+        } else if (contadorDeEstamina == 2) {
+            // @ts-ignore
+            estamina.style.width = "50%";
+        } else if (contadorDeEstamina == 3) {
+            // @ts-ignore
+            estamina.style.width = "75%";
+        } else if (contadorDeEstamina == 4) {
+            // @ts-ignore
+            estamina.style.width = "100%";
+        }
+    }*/
 
     function proximaFase() {
         console.log("Protagonista Ganhou essa fase!");
@@ -131,53 +158,46 @@
 </script>
 
 <main>
-    <div id="container">
-        <div id="topRow">
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div id="iniciandoBatle" on:click={() => iniciarLuta()}>
-                <button> Iniciar </button>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div id="iniciandoBatle" on:click={() => iniciarLuta()}>
+        <button> Iniciar </button>
+    </div>
+    <div id="blocoOne" class="chars">
+        <div class="protaInformaçoes">
+            <div id="barraDeVidaProta" />
+            <div id="barraDeEstamina">
+                <div id="Estamina" />
             </div>
-            <div id="blocoOne" class="chars">
-                <div class="protaInformaçoes">
-                    <div id="barraDeVidaProta" />
-                    <div id="barraDeEstamina" />
-                    <p class="nomeProta">{protaBatalha1.nome}</p>
-                    <p class="nomeProta">{protaBatalha1.hp}</p>
-                </div>
-                <div id="prota">
-                    <img id="protaImagem" src="luiza.png" alt="" srcset="" />
-                </div>
-                <div class="ataques">
-                    <ul>
-                        <!-- svelte-ignore a11y-click-events-have-key-events -->
-                        <div on:click={() => ataqueProta()}>
-                            Chuva De Códigos
-                        </div>
-                        <!-- svelte-ignore a11y-click-events-have-key-events -->
-                        <div on:click={() => ataqueProtaEspecial()}>
-                            Recursão
-                        </div>
-                        <!-- svelte-ignore a11y-click-events-have-key-events -->
-                        <div on:click={() => curaProtagonista()}>
-                            Hora Do Café
-                        </div>
-                    </ul>
-                </div>
-            </div>
+            <p class="nomeProta">{protaBatalha1.nome}</p>
+            <p class="nomeProta">{protaBatalha1.hp}</p>
+        </div>
+        <div id="prota">
+            <img id="protaImagem" src="luiza.png" alt="" srcset="" />
+        </div>
+        <div class="ataques">
+            <ul>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div on:click={() => ataqueProta()}>Chuva De Códigos</div>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div on:click={() => ataqueProtaEspecial()}>Recursão</div>
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div on:click={() => curaProtagonista()}>Hora Do Café</div>
+            </ul>
+        </div>
+    </div>
 
-            <div id="blocoTwo" class="chars">
-                <div class="liliInfo">
-                    <div id="barraDeVidaBoss" />
-                    <div id="barraDeEstaminaBoss" />
-                    <p class="nomeBoss">{bossOne.nome}</p>
-                    <p class="nomeBoss">{bossOne.hp}</p>
-                </div>
-                <div class="imagem">
-                    <img id="boss" src="./Liliane.png" alt="boss" srcset="" />
-                </div>
-            </div>
+    <div id="blocoTwo" class="chars">
+        <div class="liliInfo">
+            <div id="barraDeVidaBoss" />
+            <p class="nomeBoss">{bossOne.nome}</p>
+            <p class="nomeBoss">{bossOne.hp}</p>
+        </div>
+        <div class="imagem">
+            <img id="boss" src="./Liliane.png" alt="boss" srcset="" />
         </div>
     </div>
 </main>
-<link rel="stylesheet" href="./src/assets/batalhaOne.css">
-<style></style>
+<link rel="stylesheet" href="./src/assets/batalhaOne.css" />
+
+<style>
+</style>

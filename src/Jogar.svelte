@@ -1,5 +1,5 @@
 <svelte:head>
-    <link rel="stylesheet" href="/src/assets/Jogar.css">;
+    <link rel="stylesheet" href="./src/assets/Jogar.css">;
 </svelte:head>
 
 <script>
@@ -23,3 +23,4 @@
 <main>
 
 </main>
+
