@@ -29,40 +29,29 @@ main {
 }
 
 #barraDeVidaProta {
-    width: 118%;
+    width: 64px;
     height: 30px;
     background-color: red;
     position: relative;
     top: 0;
     left: 0;
-    transition: 1.0s ease;
-}
-
-#barraDeEstamina {
-    width: 100px;
-    height: 30px;
     border: 3px solid;
-    position: relative;
-    border-color: black;
-    border-radius: 3px;
+    border-radius: 10px;
+    transition: 1.0s ease; 
 }
 
-#estamina{
-    background-color: cyan;
-	height: 100%;
-	width: 30%;
-	transition: 1.0s ease;
-}
 #blocoTwo {
     float: left;
     visibility: hidden;
 }
 
 #barraDeVidaBoss {
-    width: 128%;
+    width: 128px;
     height: 30px;
-    background-color: red;
+    background-color: rgb(233, 17, 204);
     position: relative;
+    border: 3px solid;
+    border-radius: 10px;
     top: 0;
     right: 0;
     transition: 1.0s ease;

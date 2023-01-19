@@ -22,14 +22,26 @@
         }
     }
 
+    let contadoAtq = 0;
+
     function ataqueProta() {
         let dado4 = Math.round(Math.random() * 4);
         if (dado4 % 2 == 0) {
             console.log(protaBatalha1.nome + " Usou Chuva de códigos");
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
-                console.log(protaBatalha1.hp, bossOne.hp);
+                contadoAtq++;
+                console.log(protaBatalha1.hp, bossOne.hp, contadoAtq);
             }, 1000);
+            setTimeout(function () {
+                if (bossOne.hp <= 0) {
+                    // @ts-ignore
+                    barraDeVidaBoss.style.width = "0px";
+                } else {
+                    // @ts-ignore
+                    barraDeVidaBoss.style.width = bossOne.hp + "px";
+                }
+            }, 3000);
         } else {
             setTimeout(function () {
                 console.log(protaBatalha1.nome + " Errou o ataque");
@@ -45,7 +57,6 @@
                     bossAtaque();
                 }, 1000);
                 trocarTurno();
-                
             }
         }, 1000);
     }
@@ -56,6 +67,15 @@
             setTimeout(function () {
                 aleatorioAtaque();
             }, 1000);
+            setTimeout(function () {
+                if (bossOne.hp <= 0) {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = "0px";
+                } else {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
+                }
+            }, 3000);
         } else {
             setTimeout(function () {
                 console.log(bossOne.nome + " Errou o ataque");
@@ -63,7 +83,8 @@
         }
         trocarTurno();
     }
-
+    
+    
     function aleatorioAtaque() {
         let dado12 = Math.round(Math.random() * 12);
         if (dado12 >= 7) {
@@ -82,51 +103,55 @@
     }
 
     function ataqueProtaEspecial() {
-        if (protaBatalha1.hp < 59) {
-            protaBatalha1.Recursao(bossOne);
-            bossOne.Arduino(protaBatalha1);
-        }
-        if (bossOne.hp <= 0) {
-            return proximaFase();
-        } else if (protaBatalha1.hp <= 0) {
-            return bossGanhouJogo();
-        }
-        trocarTurno();
+        setTimeout(function () {
+            if (contadoAtq == 2) {
+                protaBatalha1.Recursao(bossOne);
+                contadoAtq = 0;
+                console.log(bossOne.hp , contadoAtq);
+                bossAtaque();
+            } else {
+                console.log(
+                    protaBatalha1.nome + " Não pode utlizar o ataque ainda!"
+                );
+            }
+        }, 3000);
     }
+    
+    let vezesDeCura = 3;
 
     function curaProtagonista() {
-        let vezeDeCura = 0;
+        let vidaMax = 64;
         if (protaBatalha1.hp < 59) {
             setTimeout(function () {
                 protaBatalha1.HoraDoCafe();
-                console.log(protaBatalha1.hp);
+                bossAtaque();
+                vezesDeCura--;
+                if (vezesDeCura == 0) {
+                    // @ts-ignore    
+                    buttonCura.style.visibility = 'hidden'
+                };
+                console.log(vezesDeCura);
             }, 1000);
+            setTimeout(function () {
+                if (protaBatalha1.hp > vidaMax) {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = "64px";
+                    protaBatalha1.hp = vidaMax;
+                    console.log(protaBatalha1.hp);
+                } else {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
+                }
+            }, 3000);
         } else {
-            console.log("A função não pode ser utilizada.");
+            setTimeout(function () {
+                console.log(" Protagonista perdeu o turno.");
+                bossAtaque();
+            }, 1000);
         }
         trocarTurno();
     }
-
-    /*let contadorDeEstamina = 0;
-    function subirEstamina() {
-        if (contadorDeEstamina == 0) {
-            // @ts-ignore
-            estamina.style.width = "0%";
-        } else if (contadorDeEstamina == 1) {
-            // @ts-ignore
-            estamina.style.width = "25%";
-        } else if (contadorDeEstamina == 2) {
-            // @ts-ignore
-            estamina.style.width = "50%";
-        } else if (contadorDeEstamina == 3) {
-            // @ts-ignore
-            estamina.style.width = "75%";
-        } else if (contadorDeEstamina == 4) {
-            // @ts-ignore
-            estamina.style.width = "100%";
-        }
-    }*/
-
+    
     function proximaFase() {
         console.log("Protagonista Ganhou essa fase!");
         // @ts-ignore
@@ -134,15 +159,15 @@
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
 
-        //trocarestadodojogo("menu");
+        trocarestadodojogo("menu");
     }
-
+    
     function bossGanhouJogo() {
         // @ts-ignore
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-
+        
         console.log("Você Perdeu!");
         trocarestadodojogo("menu");
     }
@@ -181,7 +206,7 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <div on:click={() => ataqueProtaEspecial()}>Recursão</div>
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <div on:click={() => curaProtagonista()}>Hora Do Café</div>
+                <div on:click={() => curaProtagonista()} id="buttonCura">HoraDoCafe</div>
             </ul>
         </div>
     </div>
