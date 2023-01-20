@@ -4,7 +4,7 @@
   import Sobre from "./Sobre.svelte";
   import Ajuda from "./Ajuda.svelte";
   import { estado } from "./Estado";
-  import BatalhaOne from "./BatalhaOne.svelte";
+  import BatalhaOne from "./batles/BatalhaOne.svelte";
 </script>
 
 <main id="tela">
@@ -21,7 +21,7 @@
 </main>
 
 <style>
-  main, #tela{
+ #tela{
     display: flex;
     position: absolute;
     top: 50%;
@@ -30,7 +30,7 @@
     height: 100vh;
     text-align: center;
     align-items: center;
-    background-image: url(IFPE.png);
+    background-image: url(./assets/IFPE.png);
     transform: translate(-50%, -50%);
 }
 </style>

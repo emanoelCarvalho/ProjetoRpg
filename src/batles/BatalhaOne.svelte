@@ -1,9 +1,9 @@
 <script>
-    import { estado, trocarestadodojogo } from "./Estado";
-    import { Protagonista } from "../Protagonista";
-    import { Boss1 } from "../Liliane";
+    import { estado, trocarestadodojogo } from "../Estado";
+    import { Protagonista } from "../persons/Protagonista";
+    import { Boss1 } from "../persons/Liliane";
     import { writable } from "svelte/store";
-    import Jogar from "./Jogar.svelte";
+    import Jogar from "../Jogar.svelte";
 
     let protaBatalha1 = new Protagonista("Luiza", 64, 11, 5);
     let bossOne = new Boss1("Liliane", 128, 13, 5);
@@ -218,7 +218,7 @@
             <p class="nomeBoss">{bossOne.hp}</p>
         </div>
         <div class="imagem">
-            <img id="boss" src="./Liliane.png" alt="boss" srcset="" />
+            <img id="boss" src="Liliane.png" alt="boss" srcset="" />
         </div>
     </div>
 </main>

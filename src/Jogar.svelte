@@ -1,26 +1,25 @@
-<svelte:head>
-   
-</svelte:head>
-
 <script>
-    import {Protagonista} from '../Protagonista';
-    import {Boss1} from '../Liliane';
-    import {Boss2} from '../David';
-    import {Boss3} from '../Ranieri';
-    import {Boss4} from '../Allam';
-    import {estado} from './Estado';
-    import {trocarestadodojogo} from './Estado';
-    import BatalhaOne from './BatalhaOne.svelte';
+    import { Protagonista } from "./persons/Protagonista";
+    import { Boss1 } from "./persons/Liliane";
+    import { Boss2 } from "./persons/David";
+    import { Boss3 } from "./persons/Ranieri";
+    import { Boss4 } from "./persons/Allam";
+    import { estado } from "./Estado";
+    import { trocarestadodojogo } from "./Estado";
+    import BatalhaOne from "./batles/BatalhaOne.svelte";
 </script>
 
+<svelte:head />
+
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="menu" on:click={() => trocarestadodojogo('menu')}>
-    <button class="mybutton">
-        Voltar ao Menu
-    </button>
-</div>
+<button id="button-Voltar" on:click={() => trocarestadodojogo("menu")}>
+    Voltar ao Menu
+</button>
 
-<main>
+<main></main>
 
-</main>
-
+<style>
+    main{
+        border: 3px solid black;
+    }
+</style>
