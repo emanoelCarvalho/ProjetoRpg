@@ -1,5 +1,10 @@
-main {
+#container {
+    visibility: hidden;
+    border: 5px solid black;
+    width: 200%;
+    height: 150%;
     transform: scale(0.5);
+    background: linear-gradient(120deg, rgb(12, 254, 85), #fffdfdda);
 }
 
 #iniciandoBatle {
@@ -18,14 +23,19 @@ main {
 }
 
 #blocoOne {
+    height: 600px;
+    border: 3px solid black;
     float: right;
     visibility: hidden;
 }
 
 #protaImagem {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     border: 1px;
+}
+.nomeProta{
+    font-size: 60px;
 }
 
 #barraDeVidaProta {
@@ -33,16 +43,33 @@ main {
     height: 30px;
     background-color: red;
     position: relative;
-    top: 0;
+    top: 1;
     left: 0;
     border: 3px solid;
     border-radius: 10px;
     transition: 1.0s ease; 
 }
 
+#ataques{
+    position: absolute;
+    right: 10px;
+    margin-top: -161px;
+    height: 4cm;
+    width: 13cm;
+    border: 3px solid black;
+}
+
+#bottonAtaque{
+    padding: 0 140px;
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 #blocoTwo {
+    height: 600px;
     float: left;
     visibility: hidden;
+    border: 3px solid black;
 }
 
 #barraDeVidaBoss {
@@ -56,13 +83,27 @@ main {
     right: 0;
     transition: 1.0s ease;
 }
+.nomeBoss{
 
-#boss {
-    height: 400px;
-    width: 400px;
+  font-size: 60px;
+}
+
+#bossImagem {
+    height: 500px;
+    width: 500px;
     border: 1px;
 }
 
-.chars {
+.chars{
     margin: 15px 100px;
+}
+#bottonRow{
+    height: 4cm;
+    width: 15cm;
+    margin-top: 20cm;
+    border: 3px solid black;
+}
+
+#fala{
+    font-size: 60px;
 }

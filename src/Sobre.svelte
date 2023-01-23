@@ -22,27 +22,43 @@
             <ol>Cleiton Ribeiro(lucascleiton180@gmail.com)</ol>
             <ol>Emanuel Carvalho(ehcs@discente.ifpe.edu.br)</ol>
             <ol>Fábio Rodrigues(fabiofilhomae@gmail.com)</ol>
-        </strong>
+        </strong><br />
+
+        <div class="creditos">
+            <h3>Créditos : </h3>
+            <ul>
+                <li />
+                <li />
+                <li />
+                <li />
+                <li />
+            </ul>
+        </div>
     </div>
     <div id="areaProfissional">
         <h2>Contatos Profissionais :</h2>
         <strong>
             <ol>
-                <a href="https://github.com/Alefthiago">GitHub : Alef Thiago</a>
-            </ol>
-        </strong>
-        <strong>
-            <ol><a href="">GitHub : Cleiton Lucas</a></ol>
-        </strong>
-        <strong>
-            <ol>
-                <a href="https://github.com/emanoelCarvalho"
-                    >GitHub : Emanoel Carvalho</a
+                <a href="https://github.com/Alefthiago" target="_blank" rel="noreferrer"
+                    >GitHub : Alef Thiago</a
                 >
             </ol>
         </strong>
         <strong>
-            <ol><a href="">GitHub : Fábio Rodrigues</a></ol>        </strong>
+            <ol>
+                <a href="https://github.com/CleitonLucas" target="_blank" rel="noreferrer"
+                    >GitHub : Cleiton Lucas</a
+                 >
+            </ol>
+        </strong>
+        <strong>
+            <ol>
+                <a href="https://github.com/emanoelCarvalho" target="_blank" rel="noreferrer"> GitHub : Emanoel Carvalho</a>
+            </ol>
+        </strong>
+        <strong>
+            <ol><a href="###">GitHub : Fábio Rodrigues</a></ol>
+        </strong>
     </div>
 
     <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -73,6 +89,7 @@
         right: 10px;
         top: 100%;
         width: 165%;
+        margin-top: -8cm;
     }
     a {
         text-decoration: none;
@@ -86,4 +103,9 @@
         bottom: 9%;
         z-index: 0;
     }
+    .mybutton-menu:active {
+        box-shadow: 0 1px;
+        transform: translateY(3px);
+    }
+
 </style>
