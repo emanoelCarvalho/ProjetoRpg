@@ -227,7 +227,7 @@
             <p class="nomeProta">{protaBatalha1.nome}</p>
         </div>
         <div id="prota">
-            <img id="protaImagem" src="luiza.png" alt="" srcset="" />
+            <img id="protaImagem" src="./luiza.png" alt="" srcset="" />
         </div>
     </div>
     <div id="blocoTwo" class="chars">
@@ -236,7 +236,7 @@
             <p class="nomeBoss">{bossOne.nome}</p>
         </div>
         <div class="imagem">
-            <img id="bossImagem" src="Liliane.png" alt="boss" srcset="" />
+            <img id="bossImagem" src="./lili.png" alt="boss" srcset="" />
         </div>
     </div>
     <div id="bottonRow">
