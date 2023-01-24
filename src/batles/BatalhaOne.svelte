@@ -48,7 +48,7 @@
         } else {
             setTimeout(function () {
                 // @ts-ignore
-                fala.innerHTML = protaBatalha1.nome + " Errou o atque";
+                fala.innerHTML = protaBatalha1.nome + " Errou o ataque";
                 //console.log(protaBatalha1.nome + " Errou o ataque");
             }, 1000);
         }
@@ -119,6 +119,15 @@
                 contadoAtq = 0;
                 console.log(bossOne.hp, contadoAtq);
                 bossAtaque();
+                setTimeout(function () {
+                if (bossOne.hp <= 0) {
+                    // @ts-ignore
+                    barraDeVidaBoss.style.width = "0px";
+                } else {
+                    // @ts-ignore
+                    barraDeVidaBoss.style.width = bossOne.hp + "px";
+                }
+            }, 3000);
             } else {
                 //@ts-ignore
                 fala.innerHTML =
@@ -133,10 +142,17 @@
         let vidaMax = 64;
         if (protaBatalha1.hp < 59) {
             setTimeout(function () {
+                //@ts-ignore
+                fala.innerHTML = protaBatalha1 +" Utilizou sua hora do cafézinho " 
                 protaBatalha1.HoraDoCafe();
                 bossAtaque();
                 vezesDeCura--;
                 if (vezesDeCura == 0) {
+                    // @ts-ignore
+                    fala.innerHTML =
+                        " Ops, parece que, " +
+                        protaBatalha1.nome +
+                        " utilizou todos os seu cafezinhos";
                     // @ts-ignore
                     buttonCura.style.visibility = "hidden";
                 }
@@ -155,6 +171,8 @@
             }, 3000);
         } else {
             setTimeout(function () {
+                // @ts-ignore
+                fala.inneHTML = protaBatalha1.nome + ' Perdeu o seu turno.';
                 console.log(" Protagonista perdeu o turno.");
                 bossAtaque();
             }, 1000);
