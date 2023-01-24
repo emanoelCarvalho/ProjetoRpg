@@ -137,7 +137,6 @@
     }
 
     let vezesDeCura = 3;
-
     function curaProtagonista() {
         let vidaMax = 64;
         if (protaBatalha1.hp < 59) {
@@ -152,7 +151,7 @@
                     fala.innerHTML =
                         " Ops, parece que, " +
                         protaBatalha1.nome +
-                        " utilizou todos os seu cafezinhos";
+                        " utilizou todos os seu cafezinhos ";
                     // @ts-ignore
                     buttonCura.style.visibility = "hidden";
                 }
@@ -247,15 +246,12 @@
     <div id="ataques">
         <ul id="bottonAtaque">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button on:click={() => ataqueProta()}>Chuva De Códigos</button>
+            <button class='buttonAtq1' on:click={() => ataqueProta()} >Chuva De Códigos</button>
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button on:click={() => ataqueProtaEspecial()}>Recursão</button>
+            <button class='buttonAtq2' on:click={() => ataqueProtaEspecial()}>Recursão</button>
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button on:click={() => curaProtagonista()}>Hora Do Café</button>
+            <button class='buttonAtq3' on:click={() => curaProtagonista()}>Hora Do Café</button>
         </ul>
     </div>
 </div>
 <link rel="stylesheet" href="./src/assets/batalhaOne.css" />
-
-<style>
-</style>

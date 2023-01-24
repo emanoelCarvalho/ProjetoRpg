@@ -60,20 +60,30 @@
 }
 
 #bottonAtaque{
-    padding: 0 80px;
+    padding: 0 130px;
     font-size: 40px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-#bottonAtaque:active{
-        box-shadow: 0 1px;
-        transform: translateY(5px);
-}
- #buttonAtaque, button{
+
+ #buttonAtaque{
     font-size: 25px;
     color: black;
     background-color:rgb(6, 155, 43); 
 }
+.buttonAtq1{
+    position: relative;
+    font-size: 25px;
+}
 
+.buttonAtq2{
+    font-size: 25px;
+    position: relative;
+}
+.buttonAtq3{
+    font-size: 25px;
+    position: relative;
+    visibility: visible;
+}
 #blocoTwo {
     height: 600px;
     float: left;
