@@ -46,7 +46,17 @@
     border-radius: 10px;
     transition: 1.0s ease; 
 }
-
+#barraDeCura{
+    width: 60px;
+    height: 15px;
+    background-color: gray;
+}
+#cura{
+    width: 60px;
+    height: 15px;
+    background-color: green;
+    float: left;
+}
 #ataques{
     position: absolute;
     right: 10px;

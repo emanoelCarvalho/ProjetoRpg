@@ -22,6 +22,8 @@
         }
     }
 
+    /*Protagonista Blocos*/
+
     let contadoAtq = 0;
 
     function ataqueProta() {
@@ -97,10 +99,12 @@
             setTimeout(function () {
                 //@ts-ignore
                 fala.innerHTML =
-                    protaBatalha1 + " Utilizou sua hora do cafézinho ";
+                    protaBatalha1.nome + " Utilizou sua hora do cafézinho ";
                 protaBatalha1.HoraDoCafe();
-                bossAtaque();
                 vezesDeCura--;
+                //@ts-ignore
+                cura.style.width = (vezesDeCura / 3) * 30 + "px";
+                bossAtaque();
                 if (vezesDeCura == 0) {
                     // @ts-ignore
                     fala.innerHTML =
@@ -109,6 +113,10 @@
                         " utilizou todos os seu cafezinhos ";
                     // @ts-ignore
                     buttonAtq3.style.visibility = "hidden";
+                    // @ts-ignore
+                    barraDeCura.style.visibility = "hidden";
+                    // @ts-ignore
+                    cura.style.visibility = "hidden";
                 }
                 console.log(vezesDeCura);
             }, 1000);
@@ -134,22 +142,24 @@
         trocarTurno();
     }
 
-    function movimentoAtaque(){
+    function movimentoAtaque() {
         // @ts-ignore
-        prota.style.translate = '-600px';
+        prota.style.translate = "-600px";
         // @ts-ignore
-        prota.style.transform = 'rotate(50deg)';
+        prota.style.transform = "rotate(50deg)";
         // @ts-ignore
-        lili.style.transform = 'rotate(-50deg)';
-        setTimeout(function(){       
+        lili.style.transform = "rotate(-50deg)";
+        setTimeout(function () {
             // @ts-ignore
-            prota.style.translate = '0px';
+            prota.style.translate = "0px";
             // @ts-ignore
-            lili.style.transform = 'rotate(0deg)';
+            lili.style.transform = "rotate(0deg)";
             // @ts-ignore
-            prota.style.transform = 'rotate(0deg)';
-        }, 1000)
+            prota.style.transform = "rotate(0deg)";
+        }, 1000);
     }
+
+    /*Bloco Boss*/
 
     function bossAtaque() {
         let dado3 = Math.round(Math.random() * 3);
@@ -161,7 +171,6 @@
             setTimeout(function () {
                 // @ts-ignore
                 fala.innerHTML = bossOne.nome + " Errou o ataque";
-                //console.log(bossOne.nome + " Errou o ataque");
             }, 1000);
         }
         trocarTurno();
@@ -173,7 +182,6 @@
             setTimeout(function () {
                 // @ts-ignore
                 fala.innerHTML = bossOne.nome + " Usou Linux ataque";
-                //console.log(bossOne.nome + " Usou Linux ataque");
                 bossOne.Linux(protaBatalha1);
             }, 1000);
             setTimeout(function () {
@@ -190,7 +198,6 @@
             setTimeout(function () {
                 // @ts-ignore
                 fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
-                //console.log(bossOne.nome + " Usou Arduíno ataque");
                 bossOne.Arduino(protaBatalha1);
             }, 1000);
             setTimeout(function () {
@@ -213,7 +220,6 @@
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-        //trocarestadodojogo("menu");
     }
 
     function bossGanhouJogo() {
@@ -223,7 +229,6 @@
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-        //trocarestadodojogo("menu");
     }
 
     function iniciarLuta() {
@@ -249,8 +254,9 @@
     <div id="blocoOne" class="chars">
         <div class="protaInformaçoes">
             <div id="barraDeVidaProta" />
-            <div id="barraDeEstamina">
-                <div id="Estamina" />
+            <br />
+            <div id="barraDeCura">
+                <div id="cura" />
             </div>
             <p class="nomeProta">{protaBatalha1.nome}</p>
         </div>
@@ -284,7 +290,7 @@
             >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <button id="buttonAtq3" on:click={() => curaProtagonista()}
-                >Hora Do Café</button
+                >Hora Do Café {vezesDeCura}</button
             >
         </ul>
     </div>
