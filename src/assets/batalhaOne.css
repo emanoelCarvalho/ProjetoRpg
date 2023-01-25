@@ -29,6 +29,8 @@
     visibility: hidden;
 }
 
+
+
 #protaImagem {
     width: 400px;
     height: 400px;
@@ -79,10 +81,10 @@
     font-size: 25px;
     position: relative;
 }
-.buttonAtq3{
+#buttonAtq3{
     font-size: 25px;
     position: relative;
-    visibility: visible;
+    visibility: hidden;
 }
 #blocoTwo {
     height: 600px;
@@ -105,6 +107,7 @@
 .nomeBoss{
   font-size: 60px;
 }
+
 
 #bossImagem {
     height: 400px;

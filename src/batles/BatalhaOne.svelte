@@ -27,16 +27,14 @@
     function ataqueProta() {
         let dado4 = Math.round(Math.random() * 4);
         if (dado4 % 2 == 0) {
-            // console.log(protaBatalha1.nome + " Usou Chuva de códigos");
             // @ts-ignore
             fala.innerHTML =
                 protaBatalha1.nome + " Atacou com chuva de  códigos";
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-                console.log(protaBatalha1.hp, bossOne.hp, contadoAtq);
             }, 1000);
-            setTimeout(function () {
+            setTimeout(() => {
                 if (bossOne.hp <= 0) {
                     // @ts-ignore
                     barraDeVidaBoss.style.width = "0px";
@@ -44,12 +42,12 @@
                     // @ts-ignore
                     barraDeVidaBoss.style.width = bossOne.hp + "px";
                 }
-            }, 3000);
+            }, 1000);
+            movimentoAtaque();
         } else {
             setTimeout(function () {
                 // @ts-ignore
                 fala.innerHTML = protaBatalha1.nome + " Errou o ataque";
-                //console.log(protaBatalha1.nome + " Errou o ataque");
             }, 1000);
         }
         setTimeout(function () {
@@ -66,21 +64,91 @@
         }, 1000);
     }
 
+    function ataqueProtaEspecial() {
+        setTimeout(function () {
+            if (contadoAtq == 2) {
+                // @ts-ignore
+                fala.innerHTML = protaBatalha1.nome + " Usou o ataque recursão";
+                protaBatalha1.Recursao(bossOne);
+                contadoAtq = 0;
+                console.log(bossOne.hp, contadoAtq);
+                bossAtaque();
+                setTimeout(function () {
+                    if (bossOne.hp <= 0) {
+                        // @ts-ignore
+                        barraDeVidaBoss.style.width = "0px";
+                    } else {
+                        // @ts-ignore
+                        barraDeVidaBoss.style.width = bossOne.hp + "px";
+                    }
+                }, 3000);
+            } else {
+                //@ts-ignore
+                fala.innerHTML =
+                    protaBatalha1.nome + " Não pode  utilizar o ataque ainda";
+            }
+        }, 3000);
+    }
+
+    let vezesDeCura = 3;
+    function curaProtagonista() {
+        let vidaMax = 64;
+        if (protaBatalha1.hp < 59) {
+            setTimeout(function () {
+                //@ts-ignore
+                fala.innerHTML =
+                    protaBatalha1 + " Utilizou sua hora do cafézinho ";
+                protaBatalha1.HoraDoCafe();
+                bossAtaque();
+                vezesDeCura--;
+                if (vezesDeCura == 0) {
+                    // @ts-ignore
+                    fala.innerHTML =
+                        " Ops, parece que, " +
+                        protaBatalha1.nome +
+                        " utilizou todos os seu cafezinhos ";
+                    // @ts-ignore
+                    buttonAtq3.style.visibility = "hidden";
+                }
+                console.log(vezesDeCura);
+            }, 1000);
+            setTimeout(function () {
+                if (protaBatalha1.hp > vidaMax) {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = "64px";
+                    protaBatalha1.hp = vidaMax;
+                    console.log(protaBatalha1.hp);
+                } else {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
+                }
+            }, 3000);
+        } else {
+            setTimeout(function () {
+                // @ts-ignore
+                fala.inneHTML = protaBatalha1.nome + " Perdeu o seu turno.";
+                console.log(" Protagonista perdeu o turno.");
+                bossAtaque();
+            }, 1000);
+        }
+        trocarTurno();
+    }
+
+    function movimentoAtaque() {
+        //@ts-ignore
+        blocoOne.style.left = '300px';
+        //@ts-ignore
+        prota.style.transform = 'rotate(-10deg)';
+        //@ts-ignore
+        prota.style.transform = 'rotate(0deg)';
+    }
+
     function bossAtaque() {
         let dado3 = Math.round(Math.random() * 3);
         if (dado3 % 2 != 0) {
             setTimeout(function () {
                 aleatorioAtaque();
             }, 1000);
-            setTimeout(function () {
-                if (bossOne.hp <= 0) {
-                    // @ts-ignore
-                    barraDeVidaProta.style.width = "0px";
-                } else {
-                    // @ts-ignore
-                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
-                }
-            }, 3000);
         } else {
             setTimeout(function () {
                 // @ts-ignore
@@ -100,69 +168,11 @@
                 //console.log(bossOne.nome + " Usou Linux ataque");
                 bossOne.Linux(protaBatalha1);
             }, 1000);
-        } else {
             setTimeout(function () {
-                // @ts-ignore
-                fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
-                //console.log(bossOne.nome + " Usou Arduíno ataque");
-                bossOne.Arduino(protaBatalha1);
-            }, 1000);
-        }
-    }
-
-    function ataqueProtaEspecial() {
-        setTimeout(function () {
-            if (contadoAtq == 2) {
-                // @ts-ignore
-                fala.innerHTML = protaBatalha1.nome + " Usou o ataque recursão";
-                protaBatalha1.Recursao(bossOne);
-                contadoAtq = 0;
-                console.log(bossOne.hp, contadoAtq);
-                bossAtaque();
-                setTimeout(function () {
-                if (bossOne.hp <= 0) {
+                if (protaBatalha1.hp <= 0) {
                     // @ts-ignore
-                    barraDeVidaBoss.style.width = "0px";
-                } else {
-                    // @ts-ignore
-                    barraDeVidaBoss.style.width = bossOne.hp + "px";
-                }
-            }, 3000);
-            } else {
-                //@ts-ignore
-                fala.innerHTML =
-                    protaBatalha1.nome + " Não pode  utilizar o ataque ainda";
-            }
-        }, 3000);
-    }
-
-    let vezesDeCura = 3;
-    function curaProtagonista() {
-        let vidaMax = 64;
-        if (protaBatalha1.hp < 59) {
-            setTimeout(function () {
-                //@ts-ignore
-                fala.innerHTML = protaBatalha1 +" Utilizou sua hora do cafézinho " 
-                protaBatalha1.HoraDoCafe();
-                bossAtaque();
-                vezesDeCura--;
-                if (vezesDeCura == 0) {
-                    // @ts-ignore
-                    fala.innerHTML =
-                        " Ops, parece que, " +
-                        protaBatalha1.nome +
-                        " utilizou todos os seu cafezinhos ";
-                    // @ts-ignore
-                    buttonCura.style.visibility = "hidden";
-                }
-                console.log(vezesDeCura);
-            }, 1000);
-            setTimeout(function () {
-                if (protaBatalha1.hp > vidaMax) {
-                    // @ts-ignore
-                    barraDeVidaProta.style.width = "64px";
-                    protaBatalha1.hp = vidaMax;
-                    console.log(protaBatalha1.hp);
+                    barraDeVidaProta.style.width = "0px";
+                    bossGanhouJogo();
                 } else {
                     // @ts-ignore
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
@@ -171,35 +181,46 @@
         } else {
             setTimeout(function () {
                 // @ts-ignore
-                fala.inneHTML = protaBatalha1.nome + ' Perdeu o seu turno.';
-                console.log(" Protagonista perdeu o turno.");
-                bossAtaque();
+                fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
+                //console.log(bossOne.nome + " Usou Arduíno ataque");
+                bossOne.Arduino(protaBatalha1);
             }, 1000);
+            setTimeout(function () {
+                if (protaBatalha1.hp <= 0) {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = "0px";
+                    bossGanhouJogo();
+                } else {
+                    // @ts-ignore
+                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
+                }
+            }, 3000);
         }
-        trocarTurno();
     }
 
     function proximaFase() {
-        console.log("Protagonista Ganhou essa fase!");
+        // @ts-ignore
+        container.style.visibility = "visible";
         // @ts-ignore
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-
         //trocarestadodojogo("menu");
     }
 
     function bossGanhouJogo() {
         // @ts-ignore
+        container.style.visibility = "visible";
+        // @ts-ignore
         blocoOne.style.visibility = "hidden";
         // @ts-ignore
         blocoTwo.style.visibility = "hidden";
-
-        console.log("Você Perdeu!");
         //trocarestadodojogo("menu");
     }
 
     function iniciarLuta() {
+        // @ts-ignore
+        buttonAtq3.style.visibility = "visible";
         // @ts-ignore
         container.style.visibility = "visible";
         // @ts-ignore
@@ -234,7 +255,7 @@
             <div id="barraDeVidaBoss" />
             <p class="nomeBoss">{bossOne.nome}</p>
         </div>
-        <div class="imagem">
+        <div class="boss">
             <img id="bossImagem" src="./lili.png" alt="boss" srcset="" />
         </div>
     </div>
@@ -246,11 +267,17 @@
     <div id="ataques">
         <ul id="bottonAtaque">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button class='buttonAtq1' on:click={() => ataqueProta()} >Chuva De Códigos</button>
+            <button class="buttonAtq1" on:click={() => ataqueProta()}
+                >Chuva De Códigos</button
+            >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button class='buttonAtq2' on:click={() => ataqueProtaEspecial()}>Recursão</button>
+            <button class="buttonAtq2" on:click={() => ataqueProtaEspecial()}
+                >Recursão</button
+            >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button class='buttonAtq3' on:click={() => curaProtagonista()}>Hora Do Café</button>
+            <button id="buttonAtq3" on:click={() => curaProtagonista()}
+                >Hora Do Café</button
+            >
         </ul>
     </div>
 </div>
