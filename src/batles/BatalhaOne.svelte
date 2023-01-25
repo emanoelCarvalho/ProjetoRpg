@@ -33,7 +33,7 @@
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-            }, 1000);
+            }, 5000);
             setTimeout(() => {
                 if (bossOne.hp <= 0) {
                     // @ts-ignore
@@ -134,13 +134,21 @@
         trocarTurno();
     }
 
-    function movimentoAtaque() {
-        //@ts-ignore
-        blocoOne.style.left = '300px';
-        //@ts-ignore
-        prota.style.transform = 'rotate(-10deg)';
-        //@ts-ignore
-        prota.style.transform = 'rotate(0deg)';
+    function movimentoAtaque(){
+        // @ts-ignore
+        prota.style.translate = '-600px';
+        // @ts-ignore
+        prota.style.transform = 'rotate(50deg)';
+        // @ts-ignore
+        lili.style.transform = 'rotate(-50deg)';
+        setTimeout(function(){       
+            // @ts-ignore
+            prota.style.translate = '0px';
+            // @ts-ignore
+            lili.style.transform = 'rotate(0deg)';
+            // @ts-ignore
+            prota.style.transform = 'rotate(0deg)';
+        }, 1000)
     }
 
     function bossAtaque() {
@@ -255,7 +263,7 @@
             <div id="barraDeVidaBoss" />
             <p class="nomeBoss">{bossOne.nome}</p>
         </div>
-        <div class="boss">
+        <div id="lili">
             <img id="bossImagem" src="./lili.png" alt="boss" srcset="" />
         </div>
     </div>

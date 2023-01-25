@@ -21,16 +21,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 #blocoOne {
-    height: 600px;
+    height: 700px;
     border: 3px solid black;
-    float: right;
     visibility: hidden;
+    float: right;
 }
-
-
-
 #protaImagem {
     width: 400px;
     height: 400px;
@@ -39,7 +35,6 @@
 .nomeProta{
     font-size: 60px;
 }
-
 #barraDeVidaProta {
     width: 64px;
     height: 30px;
@@ -87,10 +82,10 @@
     visibility: hidden;
 }
 #blocoTwo {
-    height: 600px;
-    float: left;
+    height: 700px;
     visibility: hidden;
     border: 3px solid black;
+    float: left;
 }
 
 #barraDeVidaBoss {
@@ -121,7 +116,7 @@
 #bottonRow{
     height: 4cm;
     width: 15cm;
-    margin-top: 20cm;
+    margin-top: 22cm;
     border: 3px solid black;
 }
 
