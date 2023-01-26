@@ -1,4 +1,6 @@
 <script>
+    // @ts-nocheck
+
     //import { estado, trocarestadodojogo } from "../Estado";
     import { Protagonista } from "../persons/Protagonista";
     import { Boss1 } from "../persons/Liliane";
@@ -45,7 +47,9 @@
                     barraDeVidaBoss.style.width = bossOne.hp + "px";
                 }
             }, 1000);
-            movimentoAtaque();
+            setTimeout(() => {
+                movimentoAtaque();
+            },2000);
         } else {
             setTimeout(function () {
                 // @ts-ignore
@@ -84,12 +88,30 @@
                         barraDeVidaBoss.style.width = bossOne.hp + "px";
                     }
                 }, 3000);
+                moveProtaEspecial();
             } else {
                 //@ts-ignore
                 fala.innerHTML =
                     protaBatalha1.nome + " Não pode  utilizar o ataque ainda";
             }
         }, 3000);
+    }
+
+    function moveProtaEspecial() {
+        //@ts-ignore
+        prota.style.translate = "-660px";
+        //@ts-ignore
+        prota.style.transform = "rotate(90deg)";
+        //@ts-ignore
+        lili.style.transform = "rotate(30deg)";
+
+        setTimeout(() => {
+            prota.style.translate = "0px";
+            //@ts-ignore
+            prota.style.transform = "rotate(0deg)";
+            //@ts-ignore
+            lili.style.transform = "rotate(0deg)";
+        }, 1000);
     }
 
     let vezesDeCura = 3;
@@ -167,6 +189,9 @@
             setTimeout(function () {
                 aleatorioAtaque();
             }, 1000);
+            setTimeout(() => {
+                movimentoBoss();
+            }, 3000);
         } else {
             setTimeout(function () {
                 // @ts-ignore
@@ -194,6 +219,7 @@
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 3000);
+            //movimentoBoss();
         } else {
             setTimeout(function () {
                 // @ts-ignore
@@ -210,7 +236,25 @@
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 3000);
+            //movimentoBoss();
         }
+    }
+
+    function movimentoBoss() {
+        //@ts-ignore
+        lili.style.translate = "600px";
+        //@ts-ignore
+        lili.style.transform = "rotate(-40deg)";
+        //@ts-ignore
+        prota.style.transform = "rotate(40deg)";
+        setTimeout(() => {
+            //@ts-ignore
+            lili.style.translate = "0px";
+            //@ts-ignore
+            lili.style.transform = "rotate(0deg)";
+            //@ts-ignore
+            prota.style.transform = "rotate(0deg)";
+        }, 1000);
     }
 
     function proximaFase() {
