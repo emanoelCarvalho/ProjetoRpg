@@ -18,7 +18,7 @@ export class Protagonista {
     }
 
     HoraDoCafe(){
-        this.hp = this.hp + (Math.round(3*(Math.random()+10)));
+        this.hp = this.hp + (Math.floor(Math.random()*50));
     }
 }
 

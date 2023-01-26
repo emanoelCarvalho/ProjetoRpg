@@ -28,24 +28,24 @@
     let contadoAtq = 0;
 
     function ataqueProta() {
-        let dado4 = Math.round(Math.random() * 4);
-        if (dado4 % 2 == 0) {
-            // @ts-ignore
+        let dado6 = Math.floor(Math.random() * 7);
+        if (dado6 % 2 == 0) {
+            buttonAtq1.style.visibility = "hidden";
+            buttonAtq2.style.visibility = "hidden";
+            buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " Atacou com chuva de  códigos";
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-                if (contadoAtq >= 2) {
-                    poder.style.width = "20px";
+                if (contadoAtq >= 5) {
+                    poder.style.width = "50px";
                 } else {
-                    poder.style.width = (contadoAtq / 2) * 20 + "px";
+                    poder.style.width = (contadoAtq / 5) * 50 + "px";
                 }
                 if (bossOne.hp <= 0) {
-                    // @ts-ignore
                     barraDeVidaBoss.style.width = "0px";
                 } else {
-                    // @ts-ignore
                     barraDeVidaBoss.style.width = bossOne.hp + "px";
                 }
             }, 3000);
@@ -54,7 +54,9 @@
             }, 2000);
         } else {
             setTimeout(function () {
-                // @ts-ignore
+                buttonAtq1.style.visibility = "hidden";
+                buttonAtq2.style.visibility = "hidden";
+                buttonAtq3.style.visibility = "hidden";
                 fala.innerHTML = protaBatalha1.nome + " Errou o ataque";
             }, 1000);
         }
@@ -73,7 +75,10 @@
     }
 
     function ataqueProtaEspecial() {
-        if (contadoAtq >= 2) {
+        if (contadoAtq >= 5) {
+            buttonAtq1.style.visibility = "hidden";
+            buttonAtq2.style.visibility = "hidden";
+            buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " utilizou o ataque recursão ";
             setTimeout(function () {
@@ -81,10 +86,8 @@
                 moveProtaEspecial();
                 setTimeout(function () {
                     if (bossOne.hp <= 0) {
-                        // @ts-ignore
                         barraDeVidaBoss.style.width = "0px";
                     } else {
-                        // @ts-ignore
                         barraDeVidaBoss.style.width = bossOne.hp + "px";
                     }
                 }, 1000);
@@ -92,7 +95,9 @@
                 contadoAtq = 0;
             }, 2000);
         } else {
-            //@ts-ignore
+            buttonAtq1.style.visibility = "hidden";
+            buttonAtq2.style.visibility = "hidden";
+            buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " Não pode  utilizar o ataque ainda ";
         }
@@ -111,26 +116,28 @@
     }
 
     function moveProtaEspecial() {
-        //@ts-ignore
         prota.style.translate = "-660px";
-        //@ts-ignore
+
         prota.style.transform = "rotate(90deg)";
-        //@ts-ignore
+
         lili.style.transform = "rotate(30deg)";
 
         setTimeout(() => {
             prota.style.translate = "0px";
-            //@ts-ignore
+
             prota.style.transform = "rotate(0deg)";
-            //@ts-ignore
+
             lili.style.transform = "rotate(0deg)";
         }, 1000);
     }
 
     let vezesDeCura = 3;
     function curaProtagonista() {
-        let vidaMax = 64;
+        let vidaMax = 118;
         if (protaBatalha1.hp < 59) {
+            buttonAtq1.style.visibility = "hidden";
+            buttonAtq2.style.visibility = "hidden";
+            buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " Utilizou sua hora do cafézinho ";
             setTimeout(function () {
@@ -140,7 +147,6 @@
                 if (protaBatalha1.hp > vidaMax) {
                     barraDeVidaProta.style.width = "118px";
                     protaBatalha1.hp = vidaMax;
-                    console.log(protaBatalha1.hp);
                 } else {
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
@@ -155,7 +161,12 @@
             }, 1000);
         } else {
             setTimeout(function () {
-                fala.innerHTML = protaBatalha1.nome + " Perdeu o seu turno.";
+                buttonAtq1.style.visibility = "hidden";
+                buttonAtq2.style.visibility = "hidden";
+                buttonAtq3.style.visibility = "hidden";
+                fala.innerHTML =
+                    protaBatalha1.nome +
+                    " Ainda não é hora do intervalo, perdeu o seu turno.";
             }, 1000);
         }
         setTimeout(function () {
@@ -165,18 +176,16 @@
     }
 
     function movimentoAtaque() {
-        // @ts-ignore
         prota.style.translate = "-600px";
-        // @ts-ignore
+
         prota.style.transform = "rotate(50deg)";
-        // @ts-ignore
+
         lili.style.transform = "rotate(-50deg)";
         setTimeout(function () {
-            // @ts-ignore
             prota.style.translate = "0px";
-            // @ts-ignore
+
             lili.style.transform = "rotate(0deg)";
-            // @ts-ignore
+
             prota.style.transform = "rotate(0deg)";
         }, 1000);
     }
@@ -184,25 +193,33 @@
     /*Bloco Boss*/
 
     function bossAtaque() {
-        let dado3 = Math.round(Math.random() * 3);
-        if (dado3 % 2 != 0) {
+        let dado6 = Math.floor(Math.random() * 7);
+        console.log(dado6);
+        if (dado6 % 2 == 0) {
             setTimeout(function () {
                 aleatorioAtaque();
             }, 1000);
             setTimeout(() => {
                 movimentoBoss();
+                fala.innerHTML = protaBatalha1.nome + " agora é sua vez.";
+                buttonAtq1.style.visibility = "visible";
+                buttonAtq2.style.visibility = "visible";
+                buttonAtq3.style.visibility = "visible";
             }, 3000);
         } else {
             setTimeout(function () {
-                // @ts-ignore
-                fala.innerHTML = bossOne.nome + " Errou o ataque";
-            }, 1000);
+                fala.innerHTML = bossOne.nome + " errou o ataque.";
+                buttonAtq1.style.visibility = "visible";
+                buttonAtq2.style.visibility = "visible";
+                buttonAtq3.style.visibility = "visible";
+            }, 2000);
         }
         trocarTurno();
     }
 
     function aleatorioAtaque() {
-        let dado12 = Math.round(Math.random() * 12);
+        let dado12 = Math.floor(Math.random() * 13);
+        console.log(dado12);
         if (dado12 >= 7) {
             setTimeout(function () {
                 fala.innerHTML = bossOne.nome + " Usou Linux ataque";
@@ -216,7 +233,6 @@
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 3000);
-            //movimentoBoss();
         } else {
             setTimeout(function () {
                 fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
@@ -224,63 +240,55 @@
             }, 1000);
             setTimeout(function () {
                 if (protaBatalha1.hp <= 0) {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = "0px";
                     bossGanhouJogo();
                 } else {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 3000);
-            //movimentoBoss();
         }
     }
 
     function movimentoBoss() {
-        //@ts-ignore
         lili.style.translate = "600px";
-        //@ts-ignore
+
         lili.style.transform = "rotate(-40deg)";
-        //@ts-ignore
+
         prota.style.transform = "rotate(40deg)";
         setTimeout(() => {
-            //@ts-ignore
             lili.style.translate = "0px";
-            //@ts-ignore
+
             lili.style.transform = "rotate(0deg)";
-            //@ts-ignore
+
             prota.style.transform = "rotate(0deg)";
         }, 1000);
     }
 
     function proximaFase() {
-        // @ts-ignore
         container.style.visibility = "visible";
-        // @ts-ignore
+
         blocoOne.style.visibility = "hidden";
-        // @ts-ignore
+
         blocoTwo.style.visibility = "hidden";
     }
 
     function bossGanhouJogo() {
-        // @ts-ignore
         container.style.visibility = "visible";
-        // @ts-ignore
+
         blocoOne.style.visibility = "hidden";
-        // @ts-ignore
+
         blocoTwo.style.visibility = "hidden";
     }
 
     function iniciarLuta() {
-        // @ts-ignore
         buttonAtq3.style.visibility = "visible";
-        // @ts-ignore
+
         container.style.visibility = "visible";
-        // @ts-ignore
+
         blocoOne.style.visibility = "visible";
-        // @ts-ignore
+
         blocoTwo.style.visibility = "visible";
-        // @ts-ignore
+
         iniciandoBatle.style.visibility = "hidden";
     }
 </script>
@@ -325,11 +333,11 @@
     <div id="ataques">
         <ul id="bottonAtaque">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button class="buttonAtq1" on:click={() => ataqueProta()}
+            <button id="buttonAtq1" on:click={() => ataqueProta()}
                 >Chuva De Códigos</button
             >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <button class="buttonAtq2" on:click={() => ataqueProtaEspecial()}
+            <button id="buttonAtq2" on:click={() => ataqueProtaEspecial()}
                 >Recursão {contadoAtq}</button
             >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
