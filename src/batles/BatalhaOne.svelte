@@ -1,5 +1,5 @@
 <script>
-    // @ts-nocheck
+    //@ts-nocheck
 
     //import { estado, trocarestadodojogo } from "../Estado";
     import { Protagonista } from "../persons/Protagonista";
@@ -7,7 +7,7 @@
     import { writable } from "svelte/store";
     import Jogar from "../Jogar.svelte";
 
-    let protaBatalha1 = new Protagonista("Luiza", 64, 11, 5);
+    let protaBatalha1 = new Protagonista("Luiza", 118, 11, 5);
     let bossOne = new Boss1("Liliane", 128, 13, 5);
 
     let jogadaDaVez = writable(false);
@@ -25,7 +25,6 @@
     }
 
     /*Protagonista Blocos*/
-
     let contadoAtq = 0;
 
     function ataqueProta() {
@@ -37,7 +36,11 @@
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-                poder.style.width =  contadoAtq + "10px"
+                if (contadoAtq >= 2) {
+                    poder.style.width = "20px";
+                } else {
+                    poder.style.width = (contadoAtq / 2) * 20 + "px";
+                }
                 if (bossOne.hp <= 0) {
                     // @ts-ignore
                     barraDeVidaBoss.style.width = "0px";
@@ -85,6 +88,7 @@
                         barraDeVidaBoss.style.width = bossOne.hp + "px";
                     }
                 }, 1000);
+                poder.style.width = "0px";
                 contadoAtq = 0;
             }, 2000);
         } else {
@@ -134,7 +138,7 @@
                 vezesDeCura--;
                 cura.style.width = (vezesDeCura / 3) * 30 + "px";
                 if (protaBatalha1.hp > vidaMax) {
-                    barraDeVidaProta.style.width = "64px";
+                    barraDeVidaProta.style.width = "118px";
                     protaBatalha1.hp = vidaMax;
                     console.log(protaBatalha1.hp);
                 } else {
@@ -201,24 +205,20 @@
         let dado12 = Math.round(Math.random() * 12);
         if (dado12 >= 7) {
             setTimeout(function () {
-                // @ts-ignore
                 fala.innerHTML = bossOne.nome + " Usou Linux ataque";
                 bossOne.Linux(protaBatalha1);
             }, 1000);
             setTimeout(function () {
                 if (protaBatalha1.hp <= 0) {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = "0px";
                     bossGanhouJogo();
                 } else {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 3000);
             //movimentoBoss();
         } else {
             setTimeout(function () {
-                // @ts-ignore
                 fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
                 bossOne.Arduino(protaBatalha1);
             }, 1000);
@@ -297,7 +297,8 @@
             <br />
             <div id="barraDeCura">
                 <div id="cura" />
-            </div><br>
+            </div>
+            <br />
             <div id="barraPower">
                 <div id="poder" />
             </div>

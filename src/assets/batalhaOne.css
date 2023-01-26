@@ -4,7 +4,7 @@
     width: 200%;
     height: 150%;
     transform: scale(0.5);
-    background: linear-gradient(120deg, rgb(12, 254, 85), #fffdfdda);
+    background: linear-gradient(120deg, rgb(24, 56, 34), #fffdfdda);
 }
 
 #iniciandoBatle {
@@ -23,7 +23,7 @@
 }
 #blocoOne {
     height: 700px;
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     visibility: hidden;
     float: right;
 }
@@ -37,7 +37,7 @@
     font-size: 60px;
 }
 #barraDeVidaProta {
-    width: 64px;
+    width: 118px;
     height: 30px;
     background-color: red;
     position: relative;
@@ -69,11 +69,13 @@
 }
 #ataques{
     position: absolute;
-    right: 10px;
-    margin-top: -161px;
+    right: 5%;
+    margin-top: -7.3cm;
     height: 7cm;
     width: 13cm;
-    border: 3px solid black;
+    border: 6px solid red;
+    background-color: #00FF7F;
+    border-radius: 20px;
 }
 
 #bottonAtaque{
@@ -104,7 +106,7 @@
 #blocoTwo {
     height: 700px;
     visibility: hidden;
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     float: left;
 }
 
@@ -134,10 +136,13 @@
     margin: 15px 100px;
 }
 #bottonRow{
-    height: 4cm;
-    width: 15cm;
+    height: 7cm;
+    margin-left: 5%;
+    width: 21.7cm;
     margin-top: 22cm;
-    border: 3px solid black;
+    border: 6px solid red;
+    background-color: #00FF7F;
+    border-radius: 20px;
 }
 
 #fala{
