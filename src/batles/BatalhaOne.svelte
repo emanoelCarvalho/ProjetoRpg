@@ -37,8 +37,7 @@
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-            }, 5000);
-            setTimeout(() => {
+                poder.style.width =  contadoAtq + "10px"
                 if (bossOne.hp <= 0) {
                     // @ts-ignore
                     barraDeVidaBoss.style.width = "0px";
@@ -46,10 +45,10 @@
                     // @ts-ignore
                     barraDeVidaBoss.style.width = bossOne.hp + "px";
                 }
-            }, 1000);
+            }, 3000);
             setTimeout(() => {
                 movimentoAtaque();
-            },2000);
+            }, 2000);
         } else {
             setTimeout(function () {
                 // @ts-ignore
@@ -71,14 +70,12 @@
     }
 
     function ataqueProtaEspecial() {
-        setTimeout(function () {
-            if (contadoAtq == 2) {
-                // @ts-ignore
-                fala.innerHTML = protaBatalha1.nome + " Usou o ataque recursão";
+        if (contadoAtq >= 2) {
+            fala.innerHTML =
+                protaBatalha1.nome + " utilizou o ataque recursão ";
+            setTimeout(function () {
                 protaBatalha1.Recursao(bossOne);
-                contadoAtq = 0;
-                console.log(bossOne.hp, contadoAtq);
-                bossAtaque();
+                moveProtaEspecial();
                 setTimeout(function () {
                     if (bossOne.hp <= 0) {
                         // @ts-ignore
@@ -87,14 +84,26 @@
                         // @ts-ignore
                         barraDeVidaBoss.style.width = bossOne.hp + "px";
                     }
-                }, 3000);
-                moveProtaEspecial();
+                }, 1000);
+                contadoAtq = 0;
+            }, 2000);
+        } else {
+            //@ts-ignore
+            fala.innerHTML =
+                protaBatalha1.nome + " Não pode  utilizar o ataque ainda ";
+        }
+        setTimeout(function () {
+            if (bossOne.hp <= 0) {
+                setTimeout(function () {
+                    proximaFase();
+                }, 1000);
             } else {
-                //@ts-ignore
-                fala.innerHTML =
-                    protaBatalha1.nome + " Não pode  utilizar o ataque ainda";
+                setTimeout(function () {
+                    bossAtaque();
+                }, 1000);
+                trocarTurno();
             }
-        }, 3000);
+        }, 1000);
     }
 
     function moveProtaEspecial() {
@@ -118,49 +127,36 @@
     function curaProtagonista() {
         let vidaMax = 64;
         if (protaBatalha1.hp < 59) {
+            fala.innerHTML =
+                protaBatalha1.nome + " Utilizou sua hora do cafézinho ";
             setTimeout(function () {
-                //@ts-ignore
-                fala.innerHTML =
-                    protaBatalha1.nome + " Utilizou sua hora do cafézinho ";
                 protaBatalha1.HoraDoCafe();
                 vezesDeCura--;
-                //@ts-ignore
                 cura.style.width = (vezesDeCura / 3) * 30 + "px";
-                bossAtaque();
-                if (vezesDeCura == 0) {
-                    // @ts-ignore
-                    fala.innerHTML =
-                        " Ops, parece que, " +
-                        protaBatalha1.nome +
-                        " utilizou todos os seu cafezinhos ";
-                    // @ts-ignore
-                    buttonAtq3.style.visibility = "hidden";
-                    // @ts-ignore
-                    barraDeCura.style.visibility = "hidden";
-                    // @ts-ignore
-                    cura.style.visibility = "hidden";
-                }
-                console.log(vezesDeCura);
-            }, 1000);
-            setTimeout(function () {
                 if (protaBatalha1.hp > vidaMax) {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = "64px";
                     protaBatalha1.hp = vidaMax;
                     console.log(protaBatalha1.hp);
                 } else {
-                    // @ts-ignore
                     barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
-            }, 3000);
+                if (vezesDeCura == 0) {
+                    fala.innerHTML =
+                        " Ops, parece que, " +
+                        protaBatalha1.nome +
+                        " utilizou todos os seu cafezinhos ";
+                    buttonAtq3.style.visibility = "hidden";
+                    cura.style.visibility = "hidden";
+                }
+            }, 1000);
         } else {
             setTimeout(function () {
-                // @ts-ignore
-                fala.inneHTML = protaBatalha1.nome + " Perdeu o seu turno.";
-                console.log(" Protagonista perdeu o turno.");
-                bossAtaque();
+                fala.innerHTML = protaBatalha1.nome + " Perdeu o seu turno.";
             }, 1000);
         }
+        setTimeout(function () {
+            bossAtaque();
+        }, 1000);
         trocarTurno();
     }
 
@@ -301,6 +297,9 @@
             <br />
             <div id="barraDeCura">
                 <div id="cura" />
+            </div><br>
+            <div id="barraPower">
+                <div id="poder" />
             </div>
             <p class="nomeProta">{protaBatalha1.nome}</p>
         </div>
@@ -330,7 +329,7 @@
             >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <button class="buttonAtq2" on:click={() => ataqueProtaEspecial()}
-                >Recursão</button
+                >Recursão {contadoAtq}</button
             >
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <button id="buttonAtq3" on:click={() => curaProtagonista()}

@@ -48,15 +48,24 @@
     transition: 1.0s ease; 
 }
 #barraDeCura{
-    width: 60px;
+    width: 30px;
     height: 15px;
     background-color: gray;
 }
 #cura{
-    width: 60px;
+    width: 30px;
     height: 15px;
     background-color: green;
-    float: left;
+}
+#barraPower{
+    width: 20px;
+    height: 15px;
+    background-color: black;
+}
+#poder{
+    width: 0px;
+    height: 15px;
+    background-color: cyan;
 }
 #ataques{
     position: absolute;
