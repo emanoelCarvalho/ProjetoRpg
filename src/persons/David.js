@@ -11,5 +11,9 @@ export class Boss2{
     HoraDaPratica(ObjAtacado){
         ObjAtacado.hp = ObjAtacado.hp - (this.Ataque - ObjAtacado.Defesa)
     }
+    
+    PartiuCrossfit(ObjAtacado){
+        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque*3) - ObjAtacado.Defesa)
+    }
 }
 
