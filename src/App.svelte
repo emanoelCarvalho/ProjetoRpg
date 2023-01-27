@@ -5,7 +5,7 @@
   import Ajuda from "./Ajuda.svelte";
   import { estado } from "./Estado";
   import BatalhaOne from "./batles/BatalhaOne.svelte";
-    import BatalhaTwo from "./batles/BatalhaTwo.svelte";
+  import BatalhaTwo from "./batles/BatalhaTwo.svelte";
 </script>
 
 <main id="tela">

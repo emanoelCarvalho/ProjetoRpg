@@ -4,6 +4,7 @@
     import { Protagonista } from "../persons/Protagonista";
     import { Boss2 } from "../persons/David";
     import { writable } from "svelte/store";
+    import Jogar from "../Jogar.svelte";
 
     let ProtaBatalha2 = new Protagonista("Luiza", 158, 14, 4);
     let BossTwo = new Boss2("David", 160, 16, 6);
@@ -34,25 +35,26 @@
             buttonAtq3.style.visibility = "hidden";
             fala2.innerHTML =
                 ProtaBatalha2.nome + " Atacou com chuva da códigos";
-            setTimeout(() => {
+            setTimeout(function () {
                 ProtaBatalha2.ChuvaDeCodigos(BossTwo);
                 contadorAtq++;
                 if (contadorAtq >= 5) {
                     poder.style.width = "50px";
                 } else {
-                    poder.style.width = (contadoAtq / 5) * 50 + "px";
+                    poder.style.width = (contadorAtq / 5) * 50 + "px";
                 }
                 if (BossTwo.hp <= 0) {
-                    barraDeVidaBoss.style.width = "0px";
+                    barraDeVidaBoss2.style.width = "0px";
                 } else {
-                    barraDeVidaBoss.style.width = BossTwo.hp + "px";
+                    barraDeVidaBoss2.style.width = BossTwo.hp + "px";
                 }
             }, 3000);
             setTimeout(() => {
                 movimentoAtaque();
+                bossAtaque();
             }, 2000);
         } else {
-            setTimeout(function () {
+            setTimeout(() => {
                 buttonAtq1.style.visibility = "hidden";
                 buttonAtq2.style.visibility = "hidden";
                 buttonAtq3.style.visibility = "hidden";
@@ -89,7 +91,7 @@
     }
 
     function ataqueProtaEspecial() {
-        if (contadoAtq >= 5) {
+        if (contadorAtq >= 5) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
@@ -100,9 +102,9 @@
                 moveProtaEspecial();
                 setTimeout(() => {
                     if (BossTwo.hp <= 0) {
-                        barraDeVidaBoss.style.width = "0px";
+                        barraDeVidaBoss2.style.width = "0px";
                     } else {
-                        barraDeVidaBoss.style.width = BossTwo.hp + "px";
+                        barraDeVidaBoss2.style.width = BossTwo.hp + "px";
                     }
                 }, 1000);
                 poder.style.width = "0px";
@@ -240,10 +242,10 @@
             }, 1000);
             setTimeout(() => {
                 if (ProtaBatalha2.hp <= 0) {
-                    barraDeVidaProta.style.width = "0px";
+                    barraDeVidaProta.style.width = '0px';
                     bossGanhouJogo();
                 } else {
-                    barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
+                    barraDeVidaProta.style.width = ProtaBatalha2.hp + 'px';
                 }
             }, 3000);
         }
@@ -318,7 +320,7 @@
     </div>
     <div id="blocoTow" class="chars">
         <div class="davidInfo">
-            <div id="barraDeVidaBoss" />
+            <div id="barraDeVidaBoss2" />
             <p class="nomeBoss">{BossTwo.nome}</p>
         </div>
         <div id="david">

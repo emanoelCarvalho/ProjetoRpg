@@ -1,6 +1,5 @@
 <script>
     //@ts-nocheck
-
     import { estado, trocarestadodojogo } from "../Estado";
     import { Protagonista } from "../persons/Protagonista";
     import { Boss1 } from "../persons/Liliane";
@@ -51,6 +50,7 @@
             }, 3000);
             setTimeout(() => {
                 movimentoAtaque();
+                bossAtaque();
             }, 2000);
         } else {
             setTimeout(function () {
@@ -137,7 +137,7 @@
         prota.style.transform = "rotate(50deg)";
 
         lili.style.transform = "rotate(-50deg)";
-        setTimeout(function () {
+        setTimeout(() => {
             prota.style.translate = "0px";
 
             lili.style.transform = "rotate(0deg)";
