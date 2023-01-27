@@ -223,7 +223,7 @@
         let dado12 = Math.floor(math.random() * 13);
         if (dado12 >= 7) {
             setTimeout(() => {
-                fala2.innerHTML = BossTwo.nome + " usou PacketTrace.";
+                fala2.innerHTML = BossTwo.nome + " usou Packet Trace.";
                 BossTwo.PacketTrace(ProtaBatalha2);
             }, 1000);
             setTimeout(() => {
