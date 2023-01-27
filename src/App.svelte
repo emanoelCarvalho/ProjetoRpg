@@ -5,6 +5,7 @@
   import Ajuda from "./Ajuda.svelte";
   import { estado } from "./Estado";
   import BatalhaOne from "./batles/BatalhaOne.svelte";
+    import BatalhaTwo from "./batles/BatalhaTwo.svelte";
 </script>
 
 <main id="tela">
@@ -12,7 +13,7 @@
     <Menu />
   {:else if $estado === "jogar"}
     <Jogar/>
-    <BatalhaOne/>
+    <BatalhaTwo/>
   {:else if $estado === "sobre"}
     <Sobre />
   {:else if $estado === "ajuda"}

@@ -8,7 +8,7 @@ export class Boss2{
         image = image;
     }
 
-    HoraDaPratica(ObjAtacado){
+    PacketTrace(ObjAtacado){
         ObjAtacado.hp = ObjAtacado.hp - (this.Ataque - ObjAtacado.Defesa)
     }
     

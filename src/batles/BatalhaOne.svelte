@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
 
-    //import { estado, trocarestadodojogo } from "../Estado";
+    import { estado, trocarestadodojogo } from "../Estado";
     import { Protagonista } from "../persons/Protagonista";
     import { Boss1 } from "../persons/Liliane";
     import { writable } from "svelte/store";
@@ -131,6 +131,21 @@
         }, 1000);
     }
 
+    function movimentoAtaque() {
+        prota.style.translate = "-600px";
+
+        prota.style.transform = "rotate(50deg)";
+
+        lili.style.transform = "rotate(-50deg)";
+        setTimeout(function () {
+            prota.style.translate = "0px";
+
+            lili.style.transform = "rotate(0deg)";
+
+            prota.style.transform = "rotate(0deg)";
+        }, 1000);
+    }
+
     let vezesDeCura = 3;
     function curaProtagonista() {
         let vidaMax = 118;
@@ -173,21 +188,6 @@
             bossAtaque();
         }, 1000);
         trocarTurno();
-    }
-
-    function movimentoAtaque() {
-        prota.style.translate = "-600px";
-
-        prota.style.transform = "rotate(50deg)";
-
-        lili.style.transform = "rotate(-50deg)";
-        setTimeout(function () {
-            prota.style.translate = "0px";
-
-            lili.style.transform = "rotate(0deg)";
-
-            prota.style.transform = "rotate(0deg)";
-        }, 1000);
     }
 
     /*Bloco Boss*/
