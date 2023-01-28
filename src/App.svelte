@@ -6,14 +6,15 @@
   import { estado } from "./Estado";
   import BatalhaOne from "./batles/BatalhaOne.svelte";
   import BatalhaTwo from "./batles/BatalhaTwo.svelte";
+  import BatalhaThree from "./batles/BatalhaThree.svelte";
 </script>
 
 <main id="tela">
   {#if $estado === "menu"}
     <Menu />
   {:else if $estado === "jogar"}
-    <Jogar/>
-    <BatalhaTwo/>
+    <Jogar />
+    <BatalhaThree />
   {:else if $estado === "sobre"}
     <Sobre />
   {:else if $estado === "ajuda"}
@@ -22,7 +23,7 @@
 </main>
 
 <style>
- #tela{
+  #tela {
     display: flex;
     position: absolute;
     top: 50%;
@@ -33,6 +34,5 @@
     align-items: center;
     background-image: url(../src/assets/IFPE.png);
     transform: translate(-50%, -50%);
-}
+  }
 </style>
-

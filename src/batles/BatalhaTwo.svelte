@@ -151,7 +151,7 @@
 
     function curaProtagonista() {
         let vidaMax = 158;
-        if (ProtaBatalha2.hp < 79) {
+        if (ProtaBatalha2.hp <= 95) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
@@ -221,7 +221,7 @@
 
     function aleatorioAtaque() {
         let dado12 = Math.floor(Math.random() * 13);
-        if (dado12 >= 7) {
+        if (dado12 <= 8) {
             setTimeout(() => {
                 fala2.innerHTML = BossTwo.nome + " usou Packet Trace.";
                 BossTwo.PacketTrace(ProtaBatalha2);
@@ -242,10 +242,10 @@
             }, 1000);
             setTimeout(() => {
                 if (ProtaBatalha2.hp <= 0) {
-                    barraDeVidaProta.style.width = '0px';
+                    barraDeVidaProta.style.width = "0px";
                     bossGanhouJogo();
                 } else {
-                    barraDeVidaProta.style.width = ProtaBatalha2.hp + 'px';
+                    barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
                 }
             }, 3000);
         }
@@ -272,6 +272,18 @@
         blocoOne.style.visibility = "hidden";
 
         blocoTwo.style.visibility = "hidden";
+
+        bottonRow.style.visibility = "hidden";
+
+        ataques.style.visibility = "hidden";
+
+        bottonAtaque.style.visibility = "hidden";
+
+        buttonAtq1.style.visibility = "hidden";
+
+        buttonAtq2.style.visibility = "hidden";
+
+        buttonAtq3.style.visibility = "hidden";
     }
 
     function bossGanhouJogo() {
@@ -280,6 +292,18 @@
         blocoOne.style.visibility = "hidden";
 
         blocoTwo.style.visibility = "hidden";
+
+        bottonRow.style.visibility = "hidden";
+
+        ataques.style.visibility = "hidden";
+
+        bottonAtaque.style.visibility = "hidden";
+
+        buttonAtq1.style.visibility = "hidden";
+
+        buttonAtq2.style.visibility = "hidden";
+
+        buttonAtq3.style.visibility = "hidden";
     }
 
     function iniciarLuta() {
@@ -290,6 +314,18 @@
         blocoOne.style.visibility = "visible";
 
         blocoTwo.style.visibility = "visible";
+
+        bottonRow.style.visibility = "visible";
+
+        ataques.style.visibility = "visible";
+
+        bottonAtaque.style.visibility = "visible";
+
+        buttonAtq1.style.visibility = "visible";
+
+        buttonAtq2.style.visibility = "visible";
+
+        buttonAtq3.style.visibility = "visible";
 
         iniciandoBatle.style.visibility = "hidden";
     }

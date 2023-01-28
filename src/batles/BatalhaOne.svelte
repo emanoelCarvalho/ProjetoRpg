@@ -149,15 +149,16 @@
     let vezesDeCura = 3;
     function curaProtagonista() {
         let vidaMax = 118;
-        if (protaBatalha1.hp < 59) {
+        if (protaBatalha1.hp <= 71) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " Utilizou sua hora do cafézinho ";
-            setTimeout(function () {
+            setTimeout(() => {
                 protaBatalha1.HoraDoCafe();
                 vezesDeCura--;
+                console.log(protaBatalha1.hp);
                 cura.style.width = (vezesDeCura / 3) * 30 + "px";
                 if (protaBatalha1.hp > vidaMax) {
                     barraDeVidaProta.style.width = "118px";
@@ -272,8 +273,16 @@
         blocoTwo.style.visibility = "hidden";
 
         bottonRow.style.visibility = "hidden";
-        
+
         ataques.style.visibility = "hidden";
+
+        bottonAtaque.style.visibility = "hidden";
+
+        buttonAtq1.style.visibility = "hidden";
+
+        buttonAtq2.style.visibility = "hidden";
+
+        buttonAtq3.style.visibility = "hidden";
     }
 
     function bossGanhouJogo() {
@@ -284,11 +293,23 @@
         blocoTwo.style.visibility = "hidden";
 
         bottonRow.style.visibility = "hidden";
-        
+
         ataques.style.visibility = "hidden";
+
+        bottonAtaque.style.visibility = "hidden";
+
+        buttonAtq1.style.visibility = "hidden";
+
+        buttonAtq2.style.visibility = "hidden";
+
+        buttonAtq3.style.visibility = "hidden";
     }
 
     function iniciarLuta() {
+        buttonAtq1.style.visibility = "visible";
+
+        buttonAtq2.style.visibility = "visible";
+
         buttonAtq3.style.visibility = "visible";
 
         container.style.visibility = "visible";
@@ -296,6 +317,12 @@
         blocoOne.style.visibility = "visible";
 
         blocoTwo.style.visibility = "visible";
+
+        bottonRow.style.visibility = "visible";
+
+        ataques.style.visibility = "visible";
+
+        bottonAtaque.style.visibility = "visible";
 
         iniciandoBatle.style.visibility = "hidden";
     }

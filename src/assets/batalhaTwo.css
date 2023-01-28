@@ -84,28 +84,27 @@
     border: 6px solid red;
     background-color: #00FF7F;
     border-radius: 20px;
+    visibility: hidden;
 }
 
 #bottonAtaque {
     padding: 0 130px;
     font-size: 40px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    visibility: hidden;
 }
 
-#buttonAtaque {
-    font-size: 25px;
-    color: black;
-    background-color: rgb(6, 155, 43);
-}
 
 #buttonAtq1 {
     position: relative;
     font-size: 25px;
+    visibility: hidden;
 }
 
 #buttonAtq2 {
     font-size: 25px;
     position: relative;
+    visibility: hidden;
 }
 
 #buttonAtq3 {
