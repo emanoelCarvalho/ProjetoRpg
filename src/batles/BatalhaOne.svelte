@@ -270,6 +270,10 @@
         blocoOne.style.visibility = "hidden";
 
         blocoTwo.style.visibility = "hidden";
+
+        bottonRow.style.visibility = "hidden";
+        
+        ataques.style.visibility = "hidden";
     }
 
     function bossGanhouJogo() {
@@ -278,6 +282,10 @@
         blocoOne.style.visibility = "hidden";
 
         blocoTwo.style.visibility = "hidden";
+
+        bottonRow.style.visibility = "hidden";
+        
+        ataques.style.visibility = "hidden";
     }
 
     function iniciarLuta() {

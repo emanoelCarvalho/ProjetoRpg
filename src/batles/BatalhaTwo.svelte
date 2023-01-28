@@ -220,7 +220,7 @@
     }
 
     function aleatorioAtaque() {
-        let dado12 = Math.floor(math.random() * 13);
+        let dado12 = Math.floor(Math.random() * 13);
         if (dado12 >= 7) {
             setTimeout(() => {
                 fala2.innerHTML = BossTwo.nome + " usou Packet Trace.";
@@ -291,12 +291,12 @@
 
         blocoTwo.style.visibility = "visible";
 
-        iniciarBatle.style.visibility = "hidden";
+        iniciandoBatle.style.visibility = "hidden";
     }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="inciarBatle" on:click={() => iniciarLuta()}>
+<div id="iniciandoBatle" on:click={() => iniciarLuta()}>
     <button>Iniciar</button>
 </div>
 
@@ -318,7 +318,7 @@
             <img id="protaImagem" src="./luiza.png" alt="" srcset="" />
         </div>
     </div>
-    <div id="blocoTow" class="chars">
+    <div id="blocoTwo" class="chars">
         <div class="davidInfo">
             <div id="barraDeVidaBoss2" />
             <p class="nomeBoss">{BossTwo.nome}</p>
