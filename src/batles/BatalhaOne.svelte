@@ -40,7 +40,7 @@
                 if (contadoAtq >= 4) {
                     poder.style.width = "40px";
                 } else {
-                    poder.style.width = (contadoAtq / 4) *40 + "px";
+                    poder.style.width = (contadoAtq / 4) * 40 + "px";
                 }
                 if (bossOne.hp <= 0) {
                     barraDeVidaBoss.style.width = "0px";
@@ -158,21 +158,18 @@
             setTimeout(() => {
                 protaBatalha1.HoraDoCafe();
                 vezesDeCura--;
-                console.log(protaBatalha1.hp);
                 cura.style.width = (vezesDeCura / 3) * 30 + "px";
-                if (protaBatalha1.hp > vidaMax) {
-                    barraDeVidaProta.style.width = "118px";
-                    protaBatalha1.hp = vidaMax;
-                } else {
-                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
-                }
                 if (vezesDeCura == 0) {
                     fala.innerHTML =
                         " Ops, parece que, " +
                         protaBatalha1.nome +
                         " utilizou todos os seu cafezinhos ";
-                    buttonAtq3.style.visibility = "hidden";
-                    cura.style.visibility = "hidden";
+                }
+                if (protaBatalha1.hp > vidaMax) {
+                    barraDeVidaProta.style.width = "118px";
+                    protaBatalha1.hp = vidaMax;
+                } else {
+                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
                 }
             }, 1000);
         } else {
@@ -203,16 +200,26 @@
             setTimeout(() => {
                 movimentoBoss();
                 fala.innerHTML = protaBatalha1.nome + " agora é sua vez.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 3000);
         } else {
             setTimeout(function () {
                 fala.innerHTML = bossOne.nome + " errou o ataque.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 2000);
         }
         trocarTurno();
@@ -239,15 +246,15 @@
                 fala.innerHTML = bossOne.nome + " Usou Arduíno ataque";
                 bossOne.Arduino(protaBatalha1);
             }, 1000);
-            setTimeout(function () {
-                if (protaBatalha1.hp <= 0) {
-                    barraDeVidaProta.style.width = "0px";
-                    bossGanhouJogo();
-                } else {
-                    barraDeVidaProta.style.width = protaBatalha1.hp + "px";
-                }
-            }, 3000);
         }
+        setTimeout(function () {
+            if (protaBatalha1.hp <= 0) {
+                barraDeVidaProta.style.width = "0px";
+                bossGanhouJogo();
+            } else {
+                barraDeVidaProta.style.width = protaBatalha1.hp + "px";
+            }
+        }, 3000);
     }
 
     function movimentoBoss() {

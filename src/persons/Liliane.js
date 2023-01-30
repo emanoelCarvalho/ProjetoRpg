@@ -10,10 +10,10 @@ export class Boss1 {
     }
 
     Linux(ObjAtacado){
-        ObjAtacado.hp = ObjAtacado.hp - (this.Ataque - ObjAtacado.Defesa)
+        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque) - ObjAtacado.Defesa)
     }
 
     Arduino(ObjAtacado){
-        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque*2) - ObjAtacado.Defesa)
+        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque * 3) - ObjAtacado.Defesa)
     }
 }
