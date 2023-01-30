@@ -150,7 +150,7 @@
 
     function curaProtagonista() {
         let vidaMax = 199;
-        if (ProtaBatalha3.hp <= 119) {
+        if (ProtaBatalha3.hp < 199) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
