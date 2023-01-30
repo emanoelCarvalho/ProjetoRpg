@@ -37,10 +37,10 @@
             setTimeout(function () {
                 protaBatalha1.ChuvaDeCodigos(bossOne);
                 contadoAtq++;
-                if (contadoAtq >= 5) {
-                    poder.style.width = "50px";
+                if (contadoAtq >= 4) {
+                    poder.style.width = "40px";
                 } else {
-                    poder.style.width = (contadoAtq / 5) * 50 + "px";
+                    poder.style.width = (contadoAtq / 4) *40 + "px";
                 }
                 if (bossOne.hp <= 0) {
                     barraDeVidaBoss.style.width = "0px";
@@ -75,16 +75,16 @@
     }
 
     function ataqueProtaEspecial() {
-        if (contadoAtq >= 5) {
+        if (contadoAtq >= 4) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
             fala.innerHTML =
                 protaBatalha1.nome + " utilizou o ataque recursão ";
-            setTimeout(function () {
+            setTimeout(() => {
                 protaBatalha1.Recursao(bossOne);
                 moveProtaEspecial();
-                setTimeout(function () {
+                setTimeout(() => {
                     if (bossOne.hp <= 0) {
                         barraDeVidaBoss.style.width = "0px";
                     } else {

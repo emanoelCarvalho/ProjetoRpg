@@ -7,6 +7,7 @@
   import BatalhaOne from "./batles/BatalhaOne.svelte";
   import BatalhaTwo from "./batles/BatalhaTwo.svelte";
   import BatalhaThree from "./batles/BatalhaThree.svelte";
+  import BatalhaFour from "./batles/BatalhaFour.svelte";
 </script>
 
 <main id="tela">
@@ -14,7 +15,7 @@
     <Menu />
   {:else if $estado === "jogar"}
     <Jogar />
-    <BatalhaThree />
+    <BatalhaFour />
   {:else if $estado === "sobre"}
     <Sobre />
   {:else if $estado === "ajuda"}

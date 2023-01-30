@@ -38,10 +38,10 @@
             setTimeout(function () {
                 ProtaBatalha2.ChuvaDeCodigos(BossTwo);
                 contadorAtq++;
-                if (contadorAtq >= 5) {
-                    poder.style.width = "50px";
+                if (contadorAtq >= 4) {
+                    poder.style.width = "40px";
                 } else {
-                    poder.style.width = (contadorAtq / 5) * 50 + "px";
+                    poder.style.width = (contadorAtq / 4) * 40 + "px";
                 }
                 if (BossTwo.hp <= 0) {
                     barraDeVidaBoss2.style.width = "0px";
@@ -91,7 +91,7 @@
     }
 
     function ataqueProtaEspecial() {
-        if (contadorAtq >= 5) {
+        if (contadorAtq >= 4) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";

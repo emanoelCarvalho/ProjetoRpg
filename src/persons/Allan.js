@@ -9,14 +9,14 @@ export class Boss4 {
     }
 
     CheirinhoNesseCodigo(ObjAtacado){
-        ObjAtacado.hp = ObjAtacado.hp - (this.Ataque - ObjAtacado.Defesa)
+        ObjAtacado.hp = ObjAtacado.hp - (this.Ataque - ObjAtacado.Defesa);
     }
 
     AntiGadismo(ObjAtacado){
-        ObjAtacado.hp = ObjAtacado.hp - (this.Ataque * 6)
+        ObjAtacado.hp = ObjAtacado.hp - (this.Ataque * 3);
     }
 
     cura(){
-        this.hp = this.hp + 100
+        this.hp = this.hp + 100;
     }
 }
