@@ -21,9 +21,10 @@
             }, 1000);
         }
     }
-
+    
     /*Bloco Do Protagonista, Battle 4*/
-
+    
+    let vezesDeCura = 2;
     let contadorAtq = 0;
 
     function ataqueProta() {
@@ -146,7 +147,6 @@
         }, 1000);
     }
 
-    let vezesDeCura = 2;
 
     function curaProtagonista() {
         let vidaMax = 241;
@@ -166,13 +166,14 @@
                 } else {
                     barraDeVidaProta.style.width = ProtaBatalha4.hp + "px";
                 }
-                if (vezesDeCura == 0) {
+                if (vezesDeCura <= 0) {
                     fala4.innerHTML =
                         " Ops, parece que, o dinheiro de " +
                         ProtaBatalha4.nome +
                         " acabou, Hot Dog muito caro, meu parceiro. ";
-                    buttonAtq3.style.visibility = "hidden";
-                    cura.style.visibility = "hidden";
+                        barraDeCura.style.visibility = "hidden";
+                        cura.style.visibility = "hidden";
+                        buttonAtq3.style.visibility = "hidden";
                 }
             }, 1000);
         } else {
