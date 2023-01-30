@@ -23,8 +23,6 @@
     }
     
     /*Bloco Do Protagonista, Battle 4*/
-    
-    let vezesDeCura = 2;
     let contadorAtq = 0;
 
     function ataqueProta() {
@@ -51,7 +49,6 @@
             }, 3000);
             setTimeout(() => {
                 movimentoAtaque();
-                bossAtaque();
             }, 2000);
         } else {
             setTimeout(() => {
@@ -60,19 +57,19 @@
                 buttonAtq3.style.visibility = "hidden";
                 fala4.innerHTML = ProtaBatalha4.nome + " Errou o ataque";
             }, 1000);
-            setTimeout(() => {
-                if (BossFour.hp <= 0) {
-                    setTimeout(() => {
-                        proximaFase();
-                    }, 1000);
-                } else {
-                    setTimeout(function () {
-                        bossAtaque();
-                    }, 1000);
-                    trocarTurno();
-                }
-            }, 1000);
         }
+        setTimeout(() => {
+            if (BossFour.hp <= 0) {
+                setTimeout(() => {
+                    proximaFase();
+                }, 1000);
+            } else {
+                setTimeout(function () {
+                    bossAtaque();
+                }, 1000);
+                trocarTurno();
+            }
+        }, 1000);
     }
 
     function movimentoAtaque() {
@@ -147,7 +144,7 @@
         }, 1000);
     }
 
-
+    let vezesDeCura = 2;
     function curaProtagonista() {
         let vidaMax = 241;
         if (ProtaBatalha4.hp < 241) {
@@ -160,20 +157,17 @@
                 ProtaBatalha4.HotDogJhon();
                 vezesDeCura--;
                 cura.style.width = (vezesDeCura / 2) * 20 + "px";
-                if (ProtaBatalha4.hp > vidaMax) {
-                    barraDeVidaProta.style.width = "241px";
-                    ProtaBatalha4.hp = vidaMax;
-                } else {
-                    barraDeVidaProta.style.width = ProtaBatalha4.hp + "px";
-                }
                 if (vezesDeCura <= 0) {
                     fala4.innerHTML =
                         " Ops, parece que, o dinheiro de " +
                         ProtaBatalha4.nome +
                         " acabou, Hot Dog muito caro, meu parceiro. ";
-                        barraDeCura.style.visibility = "hidden";
-                        cura.style.visibility = "hidden";
-                        buttonAtq3.style.visibility = "hidden";
+                }
+                if (ProtaBatalha4.hp > vidaMax) {
+                    barraDeVidaProta.style.width = "241px";
+                    ProtaBatalha4.hp = vidaMax;
+                } else {
+                    barraDeVidaProta.style.width = ProtaBatalha4.hp + "px";
                 }
             }, 1000);
         } else {
@@ -198,37 +192,51 @@
 
     function bossAtaque() {
         let dado6 = Math.floor(Math.random() * 7);
-        if (BossFour.hp <= 75 && contadorDeCura == 1) {
+        if (BossFour.hp < 75 && contadorDeCura == 1) {
             setTimeout(() => {
-                BossFour.cura();
                 fala4.innerHTML = BossFour.nome + " usou seu trunfo.";
+                BossFour.cura();
                 barraDeVidaBoss4.style.width = BossFour.hp + "px";
                 contadorDeCura = 0;
             }, 1000);
             setTimeout(() => {
                 fala4.innerHTML = ProtaBatalha4.nome + " agora é sua vez.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 1000);
         } else if (dado6 % 2 == 0) {
             setTimeout(() => {
                 aleatorioAtaque();
             }, 1000);
-
             setTimeout(() => {
                 movimentoBoss();
                 fala4.innerHTML = ProtaBatalha4.nome + " agora é sua vez.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 3000);
         } else {
             setTimeout(() => {
                 fala4.innerHTML = BossFour.nome + " errou o ataque.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 2000);
         }
         trocarTurno();
@@ -265,15 +273,15 @@
                     poder.style.width = (contadorAtq / 4) * 40 + "px";
                 }
             }, 1000);
-            setTimeout(() => {
-                if (ProtaBatalha4.hp <= 0) {
-                    barraDeVidaProta.style.width = "0px";
-                    bossGanhouJogo();
-                } else {
-                    barraDeVidaProta.style.width = ProtaBatalha4.hp + "px";
-                }
-            }, 3000);
         }
+        setTimeout(() => {
+            if (ProtaBatalha4.hp <= 0) {
+                barraDeVidaProta.style.width = "0px";
+                bossGanhouJogo();
+            } else {
+                barraDeVidaProta.style.width = ProtaBatalha4.hp + "px";
+            }
+        }, 3000);
     }
 
     function movimentoBoss() {

@@ -60,19 +60,19 @@
                 buttonAtq3.style.visibility = "hidden";
                 fala2.innerHTML = ProtaBatalha2.nome + " Errou o ataque";
             }, 1000);
-            setTimeout(() => {
-                if (BossTwo.hp <= 0) {
-                    setTimeout(() => {
-                        proximaFase();
-                    }, 1000);
-                } else {
-                    setTimeout(function () {
-                        bossAtaque();
-                    }, 1000);
-                    trocarTurno();
-                }
-            }, 1000);
         }
+        setTimeout(() => {
+            if (BossTwo.hp <= 0) {
+                setTimeout(() => {
+                    proximaFase();
+                }, 1000);
+            } else {
+                setTimeout(function () {
+                    bossAtaque();
+                }, 1000);
+                trocarTurno();
+            }
+        }, 1000);
     }
 
     function movimentoAtaque() {
@@ -161,19 +161,17 @@
                 ProtaBatalha2.HoraDoCafe();
                 vezesDeCura--;
                 cura.style.width = (vezesDeCura / 3) * 30 + "px";
-                if (ProtaBatalha2.hp > vidaMax) {
-                    barraDeVidaProta.style.width = "158px";
-                    ProtaBatalha2.hp = vidaMax;
-                } else {
-                    barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
-                }
                 if (vezesDeCura == 0) {
                     fala2.innerHTML =
                         " Ops, parece que, " +
                         ProtaBatalha2.nome +
                         " utilizou todos os seu cafezinhos ";
-                    buttonAtq3.style.visibility = "hidden";
-                    cura.style.visibility = "hidden";
+                }
+                if (ProtaBatalha2.hp > vidaMax) {
+                    barraDeVidaProta.style.width = "158px";
+                    ProtaBatalha2.hp = vidaMax;
+                } else {
+                    barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
                 }
             }, 1000);
         } else {
@@ -204,16 +202,26 @@
             setTimeout(() => {
                 movimentoBoss();
                 fala2.innerHTML = ProtaBatalha2.nome + " agora é sua vez.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 3000);
         } else {
             setTimeout(function () {
                 fala2.innerHTML = BossTwo.nome + " errou o ataque.";
-                buttonAtq1.style.visibility = "visible";
-                buttonAtq2.style.visibility = "visible";
-                buttonAtq3.style.visibility = "visible";
+                if (vezesDeCura == 0) {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                } else {
+                    buttonAtq1.style.visibility = "visible";
+                    buttonAtq2.style.visibility = "visible";
+                    buttonAtq3.style.visibility = "visible";
+                }
             }, 2000);
         }
         trocarTurno();
@@ -240,15 +248,15 @@
                     BossTwo.nome + " Usou o ataque, partiu Crossfit.";
                 BossTwo.PartiuCrossfit(ProtaBatalha2);
             }, 1000);
-            setTimeout(() => {
-                if (ProtaBatalha2.hp <= 0) {
-                    barraDeVidaProta.style.width = "0px";
-                    bossGanhouJogo();
-                } else {
-                    barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
-                }
-            }, 3000);
         }
+        setTimeout(() => {
+            if (ProtaBatalha2.hp <= 0) {
+                barraDeVidaProta.style.width = "0px";
+                bossGanhouJogo();
+            } else {
+                barraDeVidaProta.style.width = ProtaBatalha2.hp + "px";
+            }
+        }, 3000);
     }
 
     function movimentoBoss() {
@@ -307,8 +315,6 @@
     }
 
     function iniciarLuta() {
-        buttonAtq3.style.visibility = "visible";
-
         container.style.visibility = "visible";
 
         blocoOne.style.visibility = "visible";

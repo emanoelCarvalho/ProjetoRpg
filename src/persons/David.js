@@ -13,7 +13,7 @@ export class Boss2{
     }
     
     PartiuCrossfit(ObjAtacado){
-        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque*3) - ObjAtacado.Defesa)
+        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque * 3) - ObjAtacado.Defesa)
     }
 }
 
