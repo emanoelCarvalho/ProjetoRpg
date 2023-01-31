@@ -21,7 +21,7 @@
             }, 1000);
         }
     }
-    
+
     /*Bloco Do Protagonista, Battle 4*/
     let contadorAtq = 0;
 
@@ -192,25 +192,8 @@
 
     function bossAtaque() {
         let dado6 = Math.floor(Math.random() * 7);
-        if (BossFour.hp < 75 && contadorDeCura == 1) {
-            setTimeout(() => {
-                fala4.innerHTML = BossFour.nome + " usou seu trunfo.";
-                BossFour.cura();
-                barraDeVidaBoss4.style.width = BossFour.hp + "px";
-                contadorDeCura = 0;
-            }, 1000);
-            setTimeout(() => {
-                fala4.innerHTML = ProtaBatalha4.nome + " agora é sua vez.";
-                if (vezesDeCura == 0) {
-                    buttonAtq1.style.visibility = "visible";
-                    buttonAtq2.style.visibility = "visible";
-                } else {
-                    buttonAtq1.style.visibility = "visible";
-                    buttonAtq2.style.visibility = "visible";
-                    buttonAtq3.style.visibility = "visible";
-                }
-            }, 1000);
-        } else if (dado6 % 2 == 0) {
+
+        if (dado6 % 2 == 0) {
             setTimeout(() => {
                 aleatorioAtaque();
             }, 1000);
@@ -265,10 +248,10 @@
                     BossFour.nome +
                     " Usou o ataque, Anti Gadismo, é 13 neles hahhahha";
                 BossFour.AntiGadismo(ProtaBatalha4);
-                if (contadorAtq <= 0){
+                if (contadorAtq <= 0) {
                     contadorAtq = 0;
                     poder.style.width = "0px";
-                }else {
+                } else {
                     contadorAtq = contadorAtq - 1;
                     poder.style.width = (contadorAtq / 4) * 40 + "px";
                 }

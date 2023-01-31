@@ -17,6 +17,6 @@ export class Boss4 {
     }
 
     cura(){
-        this.hp = this.hp + 100;
+        this.hp = this.hp + 20;
     }
 }
