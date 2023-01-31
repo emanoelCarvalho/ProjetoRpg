@@ -10,7 +10,7 @@
 
     let jogadaDaVez = writable(false);
 
-    function trocarTurno() {
+    /*function trocarTurno() {
         if ($jogadaDaVez == false) {
             $jogadaDaVez = true;
             console.log($jogadaDaVez);
@@ -20,10 +20,11 @@
                 console.log($jogadaDaVez);
             }, 1000);
         }
-    }
-    
+    }*/
+
     /*Bloco Do Protagonista, Battle 4*/
     let contadorAtq = 0;
+    let contadorCura = 1;
 
     function ataqueProta() {
         let dado6 = Math.floor(Math.random() * 7);
@@ -43,8 +44,17 @@
                 }
                 if (BossFour.hp <= 0) {
                     barraDeVidaBoss4.style.width = "0px";
+                    setTimeout(()=>{
+                        proximaFase()
+                    }, 1000)
                 } else {
                     barraDeVidaBoss4.style.width = BossFour.hp + "px";
+                    if(BossFour.hp < 75 && contadorCura == 1){
+                        BossFour.cura();
+                        setTimeout(()=>{
+                            BossFour.style.width = BossFour.hp + "px"
+                        }, 1000)
+                    }
                 }
             }, 3000);
             setTimeout(() => {
@@ -59,17 +69,8 @@
             }, 1000);
         }
         setTimeout(() => {
-            if (BossFour.hp <= 0) {
-                setTimeout(() => {
-                    proximaFase();
-                }, 1000);
-            } else {
-                setTimeout(function () {
-                    bossAtaque();
-                }, 1000);
-                trocarTurno();
-            }
-        }, 1000);
+            bossAtaque();
+        }, 2000);
     }
 
     function movimentoAtaque() {
@@ -116,14 +117,9 @@
         }
         setTimeout(() => {
             if (BossFour.hp <= 0) {
-                setTimeout(() => {
-                    proximaFase();
-                }, 1000);
+                proximaFase();
             } else {
-                setTimeout(() => {
-                    bossAtaque();
-                }, 1000);
-                trocarTurno();
+                bossAtaque();
             }
         }, 1000);
     }
@@ -183,34 +179,12 @@
         setTimeout(() => {
             bossAtaque();
         }, 1000);
-        trocarTurno();
     }
 
     /*Bloco Boss*/
-
-    let contadorDeCura = 1;
-
     function bossAtaque() {
         let dado6 = Math.floor(Math.random() * 7);
-        if (BossFour.hp < 75 && contadorDeCura == 1) {
-            setTimeout(() => {
-                fala4.innerHTML = BossFour.nome + " usou seu trunfo.";
-                BossFour.cura();
-                barraDeVidaBoss4.style.width = BossFour.hp + "px";
-                contadorDeCura = 0;
-            }, 1000);
-            setTimeout(() => {
-                fala4.innerHTML = ProtaBatalha4.nome + " agora é sua vez.";
-                if (vezesDeCura == 0) {
-                    buttonAtq1.style.visibility = "visible";
-                    buttonAtq2.style.visibility = "visible";
-                } else {
-                    buttonAtq1.style.visibility = "visible";
-                    buttonAtq2.style.visibility = "visible";
-                    buttonAtq3.style.visibility = "visible";
-                }
-            }, 1000);
-        } else if (dado6 % 2 == 0) {
+        if (dado6 % 2 == 0) {
             setTimeout(() => {
                 aleatorioAtaque();
             }, 1000);
@@ -239,16 +213,15 @@
                 }
             }, 2000);
         }
-        trocarTurno();
     }
 
     function aleatorioAtaque() {
         let dado12 = Math.floor(Math.random() * 13);
         if (dado12 <= 10) {
+            fala4.innerHTML =
+                BossFour.nome +
+                " Usou o ataque Cheirinho nesse código, e sentiu cheiro de caquinha aqui einnnn";
             setTimeout(() => {
-                fala4.innerHTML =
-                    BossFour.nome +
-                    " Usou o ataque Cheirinho nesse código, e sentiu cheiro de caquinha aqui einnnn";
                 BossFour.CheirinhoNesseCodigo(ProtaBatalha4);
             }, 1000);
             setTimeout(() => {
@@ -265,10 +238,10 @@
                     BossFour.nome +
                     " Usou o ataque, Anti Gadismo, é 13 neles hahhahha";
                 BossFour.AntiGadismo(ProtaBatalha4);
-                if (contadorAtq <= 0){
+                if (contadorAtq <= 0) {
                     contadorAtq = 0;
                     poder.style.width = "0px";
-                }else {
+                } else {
                     contadorAtq = contadorAtq - 1;
                     poder.style.width = (contadorAtq / 4) * 40 + "px";
                 }

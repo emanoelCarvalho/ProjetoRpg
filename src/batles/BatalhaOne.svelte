@@ -9,9 +9,9 @@
     let protaBatalha1 = new Protagonista("Luiza", 118, 11, 5);
     let bossOne = new Boss1("Liliane", 128, 13, 5);
 
-    let jogadaDaVez = writable(false);
+    //let jogadaDaVez = writable(false);
 
-    function trocarTurno() {
+    /*function trocarTurno() {
         if ($jogadaDaVez == false) {
             $jogadaDaVez = true;
             console.log($jogadaDaVez);
@@ -69,7 +69,7 @@
                 setTimeout(function () {
                     bossAtaque();
                 }, 1000);
-                trocarTurno();
+                //trocarTurno();
             }
         }, 1000);
     }
@@ -110,7 +110,7 @@
                 setTimeout(function () {
                     bossAtaque();
                 }, 1000);
-                trocarTurno();
+                //trocarTurno();
             }
         }, 1000);
     }
@@ -185,7 +185,7 @@
         setTimeout(function () {
             bossAtaque();
         }, 1000);
-        trocarTurno();
+        //trocarTurno();
     }
 
     /*Bloco Boss*/
@@ -222,7 +222,7 @@
                 }
             }, 2000);
         }
-        trocarTurno();
+        //trocarTurno();
     }
 
     function aleatorioAtaque() {

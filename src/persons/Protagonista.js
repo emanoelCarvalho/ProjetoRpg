@@ -14,7 +14,7 @@ export class Protagonista {
     }
 
     Recursao(ObjAtacado) {
-        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque * 4) - ObjAtacado.Defesa)
+        ObjAtacado.hp = ObjAtacado.hp - ((this.Ataque * 3) - ObjAtacado.Defesa)
     }
 
     HoraDoCafe() {
