@@ -8,20 +8,6 @@
     let ProtaBatalha4 = new Protagonista("Luiza", 241, 23, 9);
     let BossFour = new Boss4("Allan", 250, 25, 10);
 
-    let jogadaDaVez = writable(false);
-
-    /*function trocarTurno() {
-        if ($jogadaDaVez == false) {
-            $jogadaDaVez = true;
-            console.log($jogadaDaVez);
-        } else if ($jogadaDaVez == true) {
-            setTimeout(() => {
-                $jogadaDaVez = false;
-                console.log($jogadaDaVez);
-            }, 1000);
-        }
-    }*/
-
     /*Bloco Do Protagonista, Battle 4*/
     let contadorAtq = 0;
     let contadorCura = 1;
@@ -39,7 +25,8 @@
                 contadorAtq++;
                 if (contadorAtq >= 4) {
                     poder.style.width = "40px";
-                } else {
+                } 
+                else {
                     poder.style.width = (contadorAtq / 4) * 40 + "px";
                 }
                 if (BossFour.hp <= 0) {
@@ -143,7 +130,7 @@
     let vezesDeCura = 2;
     function curaProtagonista() {
         let vidaMax = 241;
-        if (ProtaBatalha4.hp <= 145) {
+        if (ProtaBatalha4.hp < 241) {
             buttonAtq1.style.visibility = "hidden";
             buttonAtq2.style.visibility = "hidden";
             buttonAtq3.style.visibility = "hidden";
